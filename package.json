@@ -1,0 +1,15 @@
+{
+  "name": "vaultbid-sp2",
+  "version": "1.0.0",
+  "description": "Development of VaultBid",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "build": "npx tailwindcss -i ./css/main.css -o ./css/styles.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "tailwindcss": "^3.4.15"
+  }
+}
