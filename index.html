@@ -18,15 +18,17 @@
     <link rel="icon" type="image/png" sizes="32x32" href="assets//favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets//favicon-16x16.png">
     <link rel="manifest" href="assets//site.webmanifest">
-    <title>Welcome to VaultBid - Login </title>
+    <title> VaultBid | Login </title>
 </head>
 
 <body class="bg-charcoal">
     <header class="mx-9 flex items-center text-center justify-between py-11">
-        <div class="flex items-center gap-2">
-            <img class="w-8" src="images/vaultbid-yellow.png" alt="Vaultbid logo">
-            <p class="text-white text-2xl">Vaultbid</p>
-        </div>
+        <a class="cursor-pointer" href="/listing">
+            <div class="flex items-center gap-2">
+                <img class="w-8" src="/images/vaultbid-yellow.png " alt="Vaultbid logo">
+                <p class="text-white text-2xl">Vaultbid</p>
+            </div>
+        </a>
         <svg class="cursor-pointer w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
             <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14" />
@@ -40,14 +42,14 @@
         <!-- Login Form-->
         <form class="mt-4 min-w-60">
             <div class="flex flex-col font-open-sans">
-                <label class="text-white font-bold mt-6 pb-2" for="email">Email</label>
+                <label class="text-white font-semibold mt-6 pb-2" for="email">Email</label>
                 <input class="pl-3 h-8 min-w-60" type="email" name="email" id="email" required>
-                <label class="text-white font-bold mt-6 pb-2" for="password">Password</label>
+                <label class="text-white font-semibold mt-6 pb-2" for="password">Password</label>
                 <input class="pl-3 h-8 min-w-60" type="password" name="password" id="password" required>
-                <input class="bg-slate-blue text-white font-bold h-9 font-roboto mt-6 cursor-pointer" type="submit"
+                <input class="bg-slate-blue text-white font-semibold h-9 font-roboto mt-6 cursor-pointer" type="submit"
                     value="Login">
                 <p class="text-sm text-white pt-3">Don’t have an account? <span class="cursor-auto underline"><a
-                            href="#">Register here</a></span></p>
+                            href="registration/">Register here</a></span></p>
             </div>
         </form>
     </main>
