@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="manifest" href="assets//site.webmanifest">
+    <title>VaultBid | Profile</title>
+</head>
+
+<body class="bg-charcoal max-w-screen-1200 md:flex flex-col justify-center mx-auto">
+    <header class="mx-9 flex items-center text-center justify-between py-9">
+        <a class="cursor-pointer" href="/listing">
+            <div class="flex items-center gap-2">
+                <img class="w-8" src="/images/vaultbid-yellow.png " alt="Vaultbid logo">
+                <p class="text-white text-2xl">Vaultbid</p>
+            </div>
+        </a>
+        <svg class="cursor-pointer w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14" />
+        </svg>
+    </header>
+    <main>
+        <div class="mt-14 flex flex-col justify-center items-center text-white gap-7">
+            <h1 class="font-roboto text-3xl font-bold">My Profile</h1>
+            <img class="rounded-full w-40" src="/images/placeholder-image.png" alt="Profile photo">
+            <p class="underline font-open-sans">Update avatar image</p>
+            <!-- Update avatar modal-->
+
+            <h2 class="font-bold text-2xl font-roboto">Username</h2>
+            <button class="bg-slate-blue rounded-lg w-48 h-9 flex justify-center items-center py-5 px-6 cursor-pointer">
+                <p class="font-bold font-roboto">+ Add new listing</p>
+            </button>
+        </div>
+
+
+        <!--My Listings-->
+        <h2 class="text-white font-open-sans font-light text-3xl max-sm:text-center mx-9 pt-20">My Listings</h2>
+        <div class="flex flex-wrap gap-2 max-sm:flex-col items-center mx-9">
+            <!-- Listing card-->
+            <div class="bg-white rounded-xl w-64 mt-16 flex flex-col justify-center items-left ">
+                <img class="rounded-t-xl block w-full" src="/images/placeholder-image.png" alt="placeholder image">
+                <div class="flex flex-col gap-2 pl-7 py-9">
+                    <h2 class="list-title font-bold text-xl font-roboto">Title of listing</h2>
+                    <p class="font-open-sans">Ends: <span class="list-date font-bold">01/01/2024 </span></p>
+                    <p class="font-open-sans">Current bid: <span class="list-price font-bold">$8</span></p>
+                    <a href="/listing-details"
+                        class="list-button bg-slate-blue font-bold font-open-sans w-40 h-9 mt-5 text-white flex items-center justify-center">View</a>
+                </div>
+            </div>
+            <!-- Listing card -->
+            <div class="bg-white rounded-xl w-64 mt-16 flex flex-col justify-center items-left">
+                <img class="rounded-t-xl block w-full" src="/images/placeholder-image.png" alt="placeholder image">
+                <div class="flex flex-col gap-2 pl-7 py-9">
+                    <h2 class="list-title font-bold text-xl font-roboto">Title of listing</h2>
+                    <p class="font-open-sans">Ends: <span class="list-date font-bold">01/01/2024 </span></p>
+                    <p class="font-open-sans">Current bid: <span class="list-price font-bold">$8</span></p>
+                    <a href="/listing-details"
+                        class="list-button bg-slate-blue font-bold font-open-sans w-40 h-9 mt-5 text-white flex items-center justify-center">View</a>
+                </div>
+            </div>
+            <!-- Listing card -->
+            <div class="bg-white rounded-xl w-64 mt-16 max-sm:flex flex-col justify-center items-left">
+                <img class="rounded-t-xl block w-full" src="/images/placeholder-image.png" alt="placeholder image">
+                <div class="flex flex-col gap-2 pl-7 py-9">
+                    <h2 class="list-title font-bold text-xl font-roboto md:text-left">Title of listing</h2>
+                    <p class="font-open-sans">Ends: <span class="list-date font-bold">01/01/2024 </span></p>
+                    <p class="font-open-sans">Current bid: <span class="list-price font-bold">$8</span></p>
+                    <a href="/listing-details"
+                        class="list-button bg-slate-blue font-bold font-open-sans w-40 h-9 mt-5 text-white flex items-center justify-center">View</a>
+                </div>
+            </div>
+            <!-- Listing card -->
+            <div class="bg-white rounded-xl w-64 mt-16 max-sm:flex flex-col justify-center items-left">
+                <img class="rounded-t-xl block w-full" src="/images/placeholder-image.png" alt="placeholder image">
+                <div class="flex flex-col gap-2 pl-7 py-9">
+                    <h2 class="list-title font-bold text-xl font-roboto md:text-left">Title of listing</h2>
+                    <p class="font-open-sans">Ends: <span class="list-date font-bold">01/01/2024 </span></p>
+                    <p class="font-open-sans">Current bid: <span class="list-price font-bold">$8</span></p>
+                    <a href="/listing-details"
+                        class="list-button bg-slate-blue font-bold font-open-sans w-40 h-9 mt-5 text-white flex items-center justify-center">View</a>
+                </div>
+            </div>
+        </div>
+
+        <!--My Wins-->
+        <h2 class="text-white font-open-sans font-light text-3xl max-sm:text-center mx-9 pt-20">My Wins</h2>
+        <div class="flex flex-wrap gap-2 max-sm:flex-col items-center mx-9">
+            <!-- Listing card-->
+            <div class="bg-white rounded-xl w-64 mt-16 flex flex-col justify-center items-left ">
+                <img class="rounded-t-xl block w-full" src="/images/placeholder-image.png" alt="placeholder image">
+                <div class="flex flex-col gap-2 pl-7 py-9">
+                    <h2 class="list-title font-bold text-xl font-roboto">Title of listing</h2>
+                    <p class="font-open-sans">Ends: <span class="list-date font-bold">01/01/2024 </span></p>
+                    <p class="font-open-sans">Current bid: <span class="list-price font-bold">$8</span></p>
+                    <a href="/listing-details"
+                        class="list-button bg-slate-blue font-bold font-open-sans w-40 h-9 mt-5 text-white flex items-center justify-center">View</a>
+                </div>
+            </div>
+            <!-- Listing card -->
+            <div class="bg-white rounded-xl w-64 mt-16 flex flex-col justify-center items-left">
+                <img class="rounded-t-xl block w-full" src="/images/placeholder-image.png" alt="placeholder image">
+                <div class="flex flex-col gap-2 pl-7 py-9">
+                    <h2 class="list-title font-bold text-xl font-roboto">Title of listing</h2>
+                    <p class="font-open-sans">Ends: <span class="list-date font-bold">01/01/2024 </span></p>
+                    <p class="font-open-sans">Current bid: <span class="list-price font-bold">$8</span></p>
+                    <a href="/listing-details"
+                        class="list-button bg-slate-blue font-bold font-open-sans w-40 h-9 mt-5 text-white flex items-center justify-center">View</a>
+                </div>
+            </div>
+            <!-- Listing card -->
+            <div class="bg-white rounded-xl w-64 mt-16 max-sm:flex flex-col justify-center items-left">
+                <img class="rounded-t-xl block w-full" src="/images/placeholder-image.png" alt="placeholder image">
+                <div class="flex flex-col gap-2 pl-7 py-9">
+                    <h2 class="list-title font-bold text-xl font-roboto md:text-left">Title of listing</h2>
+                    <p class="font-open-sans">Ends: <span class="list-date font-bold">01/01/2024 </span></p>
+                    <p class="font-open-sans">Current bid: <span class="list-price font-bold">$8</span></p>
+                    <a href="/listing-details"
+                        class="list-button bg-slate-blue font-bold font-open-sans w-40 h-9 mt-5 text-white flex items-center justify-center">View</a>
+                </div>
+            </div>
+            <!-- Listing card -->
+            <div class="bg-white rounded-xl w-64 mt-16 max-sm:flex flex-col justify-center items-left">
+                <img class="rounded-t-xl block w-full" src="/images/placeholder-image.png" alt="placeholder image">
+                <div class="flex flex-col gap-2 pl-7 py-9">
+                    <h2 class="list-title font-bold text-xl font-roboto md:text-left">Title of listing</h2>
+                    <p class="font-open-sans">Ends: <span class="list-date font-bold">01/01/2024 </span></p>
+                    <p class="font-open-sans">Current bid: <span class="list-price font-bold">$8</span></p>
+                    <a href="/listing-details"
+                        class="list-button bg-slate-blue font-bold font-open-sans w-40 h-9 mt-5 text-white flex items-center justify-center">View</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="flex justify-center py-9 m-auto">
+        <p class="text-white text-center">© Copyright VaultBid 2024</p>
+    </footer>
+
+</body>
+
+</html>
