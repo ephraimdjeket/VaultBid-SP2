@@ -14,6 +14,10 @@ module.exports = {
         'open-sans': ['Open Sans', 'sans-serif']
       }
     },
+
+    maxWidth: {
+      "screen-1200": "1200px"
+    },
   },
   plugins: [],
 }
