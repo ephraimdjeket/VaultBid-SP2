@@ -18,11 +18,11 @@
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
     <link rel="manifest" href="assets//site.webmanifest">
-    <title>VaultBid | Listings</title>
+    <title>VaultBid | Listing Detail</title>
 </head>
 
 <body class="bg-charcoal">
-    <header class="mx-9 flex items-center text-center justify-between py-11">
+    <header class="mx-9 flex items-center text-center justify-between py-9">
         <a class="cursor-pointer" href="/listing">
             <div class="flex items-center gap-2">
                 <img class="w-8" src="/images/vaultbid-yellow.png " alt="Vaultbid logo">
@@ -34,36 +34,88 @@
             <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14" />
         </svg>
     </header>
-    <main class="flex flex-col justify-center items-center bg-white">
-        <div class="px-6 mt-9"> <img class="block w-80 rounded-lg" src="/images/placeholder-image.png"
-                alt="placeholder image"></div>
+    <main class="bg-white">
+        <div class="px-6 flex flex-col justify-center items-center pt-9"> <img class="block w-80 rounded-lg"
+                src="/images/placeholder-image.png" alt="placeholder image">
+        </div>
 
         <!-- Listing details-->
-        <div class=" text-center">
+        <div class="text-center">
             <h1 class="font-bold font-roboto text-3xl pt-9">Listing title</h1>
             <p class="font-bold font-open-sans py-4">Description of the listing item</p>
             <p class="font-bold font-open-sans pb-12">Username</p>
             <!-- Listing Bid-->
-            <div>
-                <p class=" font-open-sans pb-3">Ends: <span class="font-bold">01/01/2024</span></p>
-                <p class="font-open-sans pb-6">Current bid: <span class="font-bold">$50</span></p>
-                <form>
-                    <div class="flex flex-col gap-5 items-center">
-                        <label class="sr-only" for="bid-amount"></label>
-                        <input class="pl-3 border border-black h-9 w-44" type="text" name="bid-amount" id="bid-amount"
-                            required>
-                        <label class="sr-only" for="bid"></label>
-                        <input class="bg-slate-blue text-white font-bold h-9 w-44 font-open-sans" type="submit"
-                            value="Bid" name="bid">
+        </div>
+        <div class="text-center">
+            <p class=" font-open-sans pb-3">Ends: <span class="font-bold">01/01/2024</span></p>
+            <p class="font-open-sans pb-6">Current bid: <span class="font-bold">$50</span></p>
+            <form>
+                <div class="flex flex-col gap-5 items-center">
+                    <label class="sr-only" for="bid-amount"></label>
+                    <input class="pl-3 border border-black h-9 w-44" type="text" name="bid-amount" id="bid-amount"
+                        required>
+                    <label class="sr-only" for="bid"></label>
+                    <input class="bg-slate-blue text-white font-bold h-9 w-44 font-open-sans" type="submit" value="Bid"
+                        name="bid">
+                </div>
+            </form>
+        </div>
+        <!-- Bid history -->
+        <div class="flex flex-col justify-center items-left px-6 pt-24 pb-10">
+            <h2 class="font-bold text-2xl py-9">Bid History<h2>
+                    <!-- Bid history info-->
+                    <div class="flex flex-row justify-between py-2">
+                        <span class="bid-name">
+                            <p class="font-bold">Bidder:</p>
+                        </span>
+                        <span class="bid-date">
+                            <p class="font-bold">Date:</p>
+                        </span>
+                        <span class="bid-amount">
+                            <p class="font-bold">Amount:</p>
+                        </span>
                     </div>
-
-                </form>
-            </div>
+                    <!-- Bid history info-->
+                    <div class="flex flex-row justify-between py-4">
+                        <span class="bid-name">
+                            <p>John</p>
+                        </span>
+                        <span class="bid-date">
+                            <p>03/12/2024</p>
+                        </span>
+                        <span class="bid-amount">
+                            <p>$100</p>
+                        </span>
+                    </div>
+                    <!-- Bid history info-->
+                    <div class="flex flex-row justify-between py-4">
+                        <span class="bid-name">
+                            <p>John</p>
+                        </span>
+                        <span class="bid-date">
+                            <p>03/12/2024</p>
+                        </span>
+                        <span class="bid-amount">
+                            <p>$100</p>
+                        </span>
+                    </div>
+                    <!-- Bid history info-->
+                    <div class="flex flex-row justify-between py-4">
+                        <span class="bid-name">
+                            <p>John</p>
+                        </span>
+                        <span class="bid-date">
+                            <p>03/12/2024</p>
+                        </span>
+                        <span class="bid-amount">
+                            <p>$100</p>
+                        </span>
+                    </div>
         </div>
 
 
     </main>
-    <footer class="flex justify-center py-10 m-auto">
+    <footer class="flex justify-center py-9 m-auto">
         <p class="text-white text-center">© Copyright VaultBid 2024</p>
     </footer>
 
