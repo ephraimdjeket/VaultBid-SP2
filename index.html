@@ -18,22 +18,29 @@
     <link rel="icon" type="image/png" sizes="32x32" href="assets//favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets//favicon-16x16.png">
     <link rel="manifest" href="assets//site.webmanifest">
+    <script src="/js/hamburger.js" defer></script>
     <title> VaultBid | Login</title>
 </head>
 
-<body class="bg-charcoal">
-    <header class="mx-9 flex items-center text-center justify-between py-11">
+<body class="bg-charcoal max-w-screen-1200 justify-center items-center mx-auto min-h-screen">
+    <header class="mx-9 flex items-center text-center justify-between py-5">
         <a class="cursor-pointer" href="/listing">
             <div class="flex items-center gap-2">
                 <img class="w-8" src="/images/vaultbid-yellow.png " alt="Vaultbid logo">
                 <p class="text-white text-2xl">Vaultbid</p>
             </div>
         </a>
-        <svg class="cursor-pointer w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+        <svg class="cursor-pointer w-6 h-6 text-gray-800 dark:text-white block sm:hidden" id="hamburger"
+            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+            viewBox="0 0 24 24">
             <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14" />
         </svg>
+        <a href="#" class="max-sm:hidden md:block text-white font-roboto text-xl">Listings</a>
     </header>
+    <div class="bg-stone-500 block sm:hidden w-full h-40" id="menu">
+        <a href="#"
+            class="sm:block md:hidden max-sm:text-white font-roboto flex justify-center pt-3 cursor-pointer">Listings</a>
+    </div>
     <main class="mt-14 flex flex-col items-center gap-1">
         <div class="text-center text-white">
             <p class="font-roboto font-bold text-2xl">Welcome to VaultBid</p>
@@ -43,9 +50,9 @@
         <form class="mt-4 min-w-60">
             <div class="flex flex-col font-open-sans">
                 <label class="text-white font-semibold mt-6 pb-2" for="email">Email</label>
-                <input class="pl-3 h-8 min-w-60" type="email" name="email" id="email" required>
+                <input class="pl-3 h-8 min-w-60 md:w-72" type="email" name="email" id="email" required>
                 <label class="text-white font-semibold mt-6 pb-2" for="password">Password</label>
-                <input class="pl-3 h-8 min-w-60" type="password" name="password" id="password" required>
+                <input class="pl-3 h-8 min-w-60 md:w-72" type="password" name="password" id="password" required>
                 <input class="bg-slate-blue text-white font-semibold h-9 font-roboto mt-6 cursor-pointer" type="submit"
                     value="Login">
                 <p class="text-sm text-white pt-3">Don’t have an account? <span class="cursor-auto underline"><a
