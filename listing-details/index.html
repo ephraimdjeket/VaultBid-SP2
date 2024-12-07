@@ -14,54 +14,87 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
         rel="stylesheet">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
-    <link rel="manifest" href="assets//site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="manifest" href="/assets/site.webmanifest">
+    <script src="/js/hamburger.js" defer></script>
     <title>VaultBid | Listing Detail</title>
 </head>
 
-<body class="bg-charcoal">
-    <header class="mx-9 flex items-center text-center justify-between py-9">
-        <a class="cursor-pointer" href="/listing">
-            <div class="flex items-center gap-2">
-                <img class="w-8" src="/images/vaultbid-yellow.png " alt="Vaultbid logo">
-                <p class="text-white text-2xl">Vaultbid</p>
+<body class="bg-charcoal max-w-screen-1200 mx-auto min-h-screen flex flex-col">
+    <header class="mx-9 flex items-center text-center justify-between py-5">
+        <a class="cursor-pointer py-4" href="/listing">
+            <div class="flex items-center gap-3">
+                <div class="flex flex-row justify-center items-center gap-2"> <img class="w-10 h-10"
+                        src="/images/vaultbid-yellow.png " alt="Vaultbid logo">
+                    <div class="flex flex-col items-start text-white">
+                        <p class=" text-2xl font-bold font-roboto">Vaultbid</p>
+                        <p class="font-roboto text-xs font-light max-sm:hidden md:block">Unlock the Best Deals, Bid
+                            with
+                            Confidence.
+                        </p>
+                    </div>
+
+                </div>
             </div>
         </a>
-        <svg class="cursor-pointer w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+        <svg class="cursor-pointer w-6 h-6 text-gray-800 dark:text-white block sm:hidden" id="hamburger"
+            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+            viewBox="0 0 24 24">
             <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14" />
         </svg>
+        <div class="max-sm:hidden  flex gap-10">
+            <p class="max-sm:hidden md:block text-white font-roboto text-lg">Credits: $<span>1000</span></p>
+            <a href="/listing/" class="max-sm:hidden md:block text-white font-roboto text-lg">Listings</a>
+            <a href="/profile/" class="max-sm:hidden md:block text-white font-roboto text-lg">Profile</a>
+            <a href="/index.html"
+                class="max-sm:hidden bg-slate-blue text-white font-roboto flex items-center justify-center w-32 h-8 cursor-pointer">Logout</a>
+        </div>
     </header>
-    <main class="bg-white">
-        <div class="px-6 flex flex-col justify-center items-center pt-9"> <img class="block w-80 rounded-lg"
-                src="/images/placeholder-image.png" alt="placeholder image">
+    <div class="bg-stone-500 w-full h-48 sm:hidden" id="menu">
+        <div class="flex flex-col justify-around items-center py-4">
+            <p class="sm:hidden text-white font-roboto text-lg">Credits: $<span>1000</span></p>
+            <a href="/listing/" class="sm:hidden text-white font-roboto text-lg py-2">Listings</a>
+            <a href="/profile/" class="sm:hidden text-white font-roboto text-lg py-2">Profile</a>
+            <a href="/index.html"
+                class="sm:hidden bg-slate-blue text-white font-roboto flex items-center justify-center w-32 h-8 cursor-pointer py-2">Logout</a>
         </div>
-
-        <!-- Listing details-->
-        <div class="text-center">
-            <h1 class="font-bold font-roboto text-3xl pt-9">Listing title</h1>
-            <p class="font-bold font-open-sans py-4">Description of the listing item</p>
-            <p class="font-bold font-open-sans pb-12">Username</p>
-            <!-- Listing Bid-->
-        </div>
-        <div class="text-center">
-            <p class=" font-open-sans pb-3">Ends: <span class="font-bold">01/01/2024</span></p>
-            <p class="font-open-sans pb-6">Current bid: <span class="font-bold">$50</span></p>
-            <form>
-                <div class="flex flex-col gap-5 items-center">
-                    <label class="sr-only" for="bid-amount"></label>
-                    <input class="pl-3 border border-black h-9 w-44" type="text" name="bid-amount" id="bid-amount"
-                        required>
-                    <label class="sr-only" for="bid"></label>
-                    <input class="bg-slate-blue text-white font-bold h-9 w-44 font-open-sans" type="submit" value="Bid"
-                        name="bid">
+    </div>
+    <main class="bg-white lg:rounded-xl">
+        <div class="lg:flex flex-row justify-center items-center">
+            <div class="lg:flex flex-row items-center gap-10">
+                <div class="px-6 flex flex-col justify-center items-center pt-9"> <img class="block w-96 rounded-lg"
+                        src="/images/placeholder-image.png" alt="placeholder image">
                 </div>
-            </form>
+
+                <!-- Listing details-->
+                <div class="flex flex-col items-center lg:items-start">
+                    <h1 class="font-bold font-roboto text-3xl pt-9">Listing title</h1>
+                    <p class="font-bold font-open-sans py-4">Description of the listing item</p>
+                    <p class="font-bold font-open-sans pb-12">Username</p>
+                    <!-- Listing Bid-->
+                    <div class="lg:flex flex-col items-start">
+                        <p class=" font-open-sans pb-3">Ends: <span class="font-bold">01/01/2024</span></p>
+                        <p class="font-open-sans pb-6">Current bid: <span class="font-bold">$50</span></p>
+                        <form class="flex items-start">
+                            <div class="flex flex-col gap-5 items-center">
+                                <label class="sr-only" for="bid-amount"></label>
+                                <input class="pl-3 border border-black h-9 w-44" type="text" name="bid-amount"
+                                    id="bid-amount" required>
+                                <label class="sr-only" for="bid"></label>
+                                <input class="bg-slate-blue text-white font-bold h-9 w-44 font-open-sans" type="submit"
+                                    value="Bid" name="bid">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+            </div>
         </div>
         <!-- Bid history -->
-        <div class="flex flex-col justify-center items-left px-6 pt-24 pb-10">
+        <div class="flex-col justify-center md:flex items-left px-6 pt-24 pb-10 lg:max-w-screen-730 mx-auto">
             <h2 class="font-bold text-2xl py-9">Bid History<h2>
                     <!-- Bid history info-->
                     <div class="flex flex-row justify-between py-2">
@@ -115,10 +148,17 @@
 
 
     </main>
-    <footer class="flex justify-center py-9 m-auto">
+    <footer class="flex justify-center gap-6 py-10">
         <p class="text-white text-center">© Copyright VaultBid 2024</p>
+        <a class="cursor-pointer" href="https://github.com/ephraimdjeket" target="_blank"><svg
+                class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd"
+                    d="M12.006 2a9.847 9.847 0 0 0-6.484 2.44 10.32 10.32 0 0 0-3.393 6.17 10.48 10.48 0 0 0 1.317 6.955 10.045 10.045 0 0 0 5.4 4.418c.504.095.683-.223.683-.494 0-.245-.01-1.052-.014-1.908-2.78.62-3.366-1.21-3.366-1.21a2.711 2.711 0 0 0-1.11-1.5c-.907-.637.07-.621.07-.621.317.044.62.163.885.346.266.183.487.426.647.71.135.253.318.476.538.655a2.079 2.079 0 0 0 2.37.196c.045-.52.27-1.006.635-1.37-2.219-.259-4.554-1.138-4.554-5.07a4.022 4.022 0 0 1 1.031-2.75 3.77 3.77 0 0 1 .096-2.713s.839-.275 2.749 1.05a9.26 9.26 0 0 1 5.004 0c1.906-1.325 2.74-1.05 2.74-1.05.37.858.406 1.828.101 2.713a4.017 4.017 0 0 1 1.029 2.75c0 3.939-2.339 4.805-4.564 5.058a2.471 2.471 0 0 1 .679 1.897c0 1.372-.012 2.477-.012 2.814 0 .272.18.592.687.492a10.05 10.05 0 0 0 5.388-4.421 10.473 10.473 0 0 0 1.313-6.948 10.32 10.32 0 0 0-3.39-6.165A9.847 9.847 0 0 0 12.007 2Z"
+                    clip-rule="evenodd" />
+            </svg>
+        </a>
     </footer>
-
 </body>
 
 </html>
