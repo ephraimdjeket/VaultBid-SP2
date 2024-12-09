@@ -18,7 +18,8 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
     <link rel="manifest" href="/assets/site.webmanifest">
-    <script src="/js/hamburger.js" defer></script>
+    <script src="/js/ui/hamburger.js" defer></script>
+    <script type="module" src="/js/auth/register.mjs"></script>
     <title>VaultBid | Registration</title>
 </head>
 
@@ -57,19 +58,19 @@
     <main class=" flex flex-col items-center justify-center gap-1 flex-grow">
 
         <!-- Registration Form-->
-        <form class="mt-4 min-w-60 py-10">
+        <form class="mt-4 min-w-60 py-10" id="register-form">
             <p class="font-roboto  text-2xl text-center text-white">Register an account</p>
             <div class="flex flex-col font-open-sans">
-                <label class="text-white font-semibold mt-6 pb-2" for="name">Name</label>
-                <input class="pl-3 h-8 min-w-60 md:w-72" type="text" name="name" id="name" required>
-                <label class="text-white font-semibold mt-6 pb-2" for="email">Email</label>
-                <input class="pl-3 h-8 min-w-60 md:w-72" type="email" name="email" id="email" required>
-                <label class="text-white font-semibold mt-6 pb-2" for="password">Password</label>
-                <input class="pl-3 h-8 min-w-60 md:w-72" type="password" name="password" id="password" required>
-                <label class="text-white font-semibold mt-6 pb-2" for="password-two">Repeat Password</label>
-                <input class="pl-3 h-8 min-w-60 md:w-72" type="text" name="password" id="password-two" required>
-                <label class="text-white font-semibold mt-6 pb-2" for="AvatarUrl">Avatar Url</label>
-                <input class="pl-3 h-8 min-w-60 md:w-72" type="text" name="AvatarUrl" id="AvatarUrl">
+                <label class="text-white font-semibold mt-6 pb-2" for="register-name">Name</label>
+                <input class="pl-3 h-8 min-w-60 md:w-72" type="text" name="register-name" id="register-name" required>
+                <label class="text-white font-semibold mt-6 pb-2" for="register-email">Email</label>
+                <input class="pl-3 h-8 min-w-60 md:w-72" type="email" name="register-email" id="register-email"
+                    required>
+                <label class="text-white font-semibold mt-6 pb-2" for="register-password">Password</label>
+                <input class="pl-3 h-8 min-w-60 md:w-72" type="password" name="register-password" id="register-password"
+                    required>
+                <label class="text-white font-semibold mt-6 pb-2" for="register-avatarurl">Avatar Url</label>
+                <input class="pl-3 h-8 min-w-60 md:w-72" type="text" name="register-avatarurl" id="register-avatarurl">
                 <input class="bg-slate-blue text-white font-semibold h-9 font-roboto mt-6 cursor-pointer" type="submit"
                     value="Sign up">
                 <p class="text-sm text-white pt-3 text-center">Already have an account? <span
