@@ -19,6 +19,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
     <link rel="manifest" href="/assets/site.webmanifest">
     <script src="/js/ui/hamburger.js" defer></script>
+    <script type="module" src="/js/auth/login.mjs"></script>
     <title> VaultBid | Login</title>
 </head>
 
@@ -60,12 +61,13 @@
             <p class="w-80 pt-3">Discover the thrill of auctions at VaultBid, where every bid counts!</p>
         </div>
         <!-- Login Form-->
-        <form class="mt-4 min-w-60 ">
+        <form class="mt-4 min-w-60" id="login-form">
             <div class="flex flex-col font-open-sans">
-                <label class="text-white font-semibold mt-6 pb-2" for="email">Email</label>
-                <input class="pl-3 h-8 min-w-60 md:w-72" type="email" name="email" id="email" required>
-                <label class="text-white font-semibold mt-6 pb-2" for="password">Password</label>
-                <input class="pl-3 h-8 min-w-60 md:w-72" type="password" name="password" id="password" required>
+                <label class="text-white font-semibold mt-6 pb-2" for="login-email">Email</label>
+                <input class="pl-3 h-8 min-w-60 md:w-72" type="email" name="login-email" id="login-email" required>
+                <label class="text-white font-semibold mt-6 pb-2" for="login-password">Password</label>
+                <input class="pl-3 h-8 min-w-60 md:w-72" type="password" name="login-password" id="login-password"
+                    required>
                 <input class="bg-slate-blue text-white font-semibold h-9 font-roboto mt-6 cursor-pointer" type="submit"
                     value="Login">
                 <p class="text-sm text-white pt-3 text-center">Don’t have an account? <span
