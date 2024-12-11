@@ -19,6 +19,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
     <link rel="manifest" href="/assets/site.webmanifest">
     <script src="/js/ui/hamburger.js" defer></script>
+    <script type="module" src="/js/auction/listings.mjs"></script>
     <title>VaultBid | Listings</title>
 </head>
 
@@ -78,7 +79,7 @@
             </div>
         </form>
         <!-- Listing card container-->
-        <div class="grid gap-16 md:grid-cols-2 lg:grid-cols-4">
+        <div class="grid gap-16 md:grid-cols-2 lg:grid-cols-4" id="listing-container">
             <!-- Listing Card -->
             <div class="bg-white rounded-xl w-64 mt-16 flex flex-col justify-center items-left">
                 <img class="rounded-t-xl block w-full" src="/images/placeholder-image.png" alt="placeholder image">
