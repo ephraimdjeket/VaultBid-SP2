@@ -21,6 +21,7 @@ async function login() {
             console.log(json.errors[0].message);
             return;
         } else {
+            window.location.href = "/listing/";
             console.log("yes");
         }
 
