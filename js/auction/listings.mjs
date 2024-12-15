@@ -1,66 +1,104 @@
 import { API_BASE_URL } from "../utils/apiConfig.mjs";
 
-const listingContainer = document.getElementById("listing-container");
+const listingCardContainer = document.getElementById("listing-container");
 
 async function auctionListings() {
+    if (!listingCardContainer) {
+        console.error("Listing container element not found.");
+        return;
+    }
+
     try {
         const response = await fetch(`${API_BASE_URL}/auction/listings`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
-            }
+            },
         });
+
         if (!response.ok) {
             throw new Error(`Error: ${response.status} ${response.statusText}`);
         }
-        const data = await response.json();
-        data.forEach(dataType => {
-            // The listing card
-            const listingCard = document.createElement("div");
-            listingCard.classList.add("bg-white rounded-xl w-64 mt-16 flex flex-col justify-center items-left");
 
-            //Listing card img
+        const { data } = await response.json();
+        console.log("API Response Data:", data);
+
+        data.forEach((item) => {
+            console.log("Rendering Listing:", item);
+            const listingCard = document.createElement("div");
+            listingCard.classList.add(
+                "bg-white",
+                "rounded-xl",
+                "w-64",
+                "mt-16",
+                "flex",
+                "flex-col",
+                "justify-center",
+                "items-left",
+            );
+            console.log(item.media);
+
+            // Add image
+            const mediaUrl = item.media && item.media.length > 0 ? item.media[0].url : "/images/placeholder-image.png";
             const listingCardImg = document.createElement("img");
-            listingCardImg.classList.add("rounded-t-xl block w-full");
-            listingCardImg.src = dataType.media && dataType.media[0].length > 0 ? `${dataType.media[0].url}` : "/images/placeholder-image.png";
-            listingCardImg.alt = dataType.media && dataType.media[0].length > 0 ? `${dataType.media[0].url}` : "placeholder-image";
+            listingCardImg.style.height = "12rem";
+            listingCardImg.classList.add("rounded-t-xl", "block", "w-full", "object-cover");
+            listingCardImg.src = mediaUrl;
+            listingCardImg.alt = item.media && item.media.length > 0 ? item.media[0].alt : "Placeholder Image";
             listingCard.appendChild(listingCardImg);
 
-            //Listing title
+            // Add card information container
+            const listingContainer = document.createElement("div");
+            listingContainer.classList.add("pl-7",
+                "py-9");
+
+            // Add title
             const listingTitle = document.createElement("h2");
-            listingTitle.classList.add("list-title font-bold text-xl font-roboto");
-            listingTitle.innerText = `${dataType.title}`;
-            listingCard.appendChild(listingTitle);
+            listingTitle.classList.add("list-title", "font-bold", "text-xl", "font-roboto", "w-full", "truncate");
+            listingTitle.innerText = item.title && item.title.length > 12
+                ? item.title.substring(0, 12) + "..."
+                : item.title || "Untitled Listing";
+            listingContainer.appendChild(listingTitle);
 
-            //Listing date
+            // Add creation date
             const listingDateContainer = document.createElement("p");
-            const listingDate = document.createElement("span");
             listingDateContainer.classList.add("font-open-sans");
-            listingDate.classList.add("list-date font-bold");
-            listingDate.innerText = `${dataType.created}`;
-            listingDateContainer.appendChild(listingDate);
-            listingCard.appendChild(listingDateContainer);
+            const listingDate = null;
+            listingDateContainer.innerText = `Created: ${listingDate}`;
+            listingContainer.appendChild(listingDateContainer);
 
-            //Listing bid
+            // Add bid count
             const listingBidContainer = document.createElement("p");
-            const listingBids = document.createElement("span");
             listingBidContainer.classList.add("font-open-sans");
-            listingBids.classList.add("font-bold");
-            listingBids.innerText = `${dataType.bids}`
-            listingBidContainer.appendChild(listingBids);
-            listingCard.appendChild(listingBidContainer);
+            const bidCount = item._count?.bids || 0;
+            listingBidContainer.innerText = `Bids: ${bidCount}`;
+            listingContainer.appendChild(listingBidContainer);
 
-            // Listing button
+            // Add view button
             const listingButton = document.createElement("a");
-            listingButton.href = `/listing-details/`
-            listingButton.classList.add("list-button bg-slate-blue font-bold font-open-sans w-40 h-9 mt-5 text-white flex items-center justify-center");
-            listingButton.innerText = "View"
-            listingCard.appendChild(listingButton)
-            console.log(listingCard)
-            listingContainer.appendChild(listingCard);
-        })
-    } catch (error) {
+            listingButton.href = `/listing-details/${item.id}`;
+            listingButton.classList.add(
+                "list-button",
+                "bg-slate-blue",
+                "font-bold",
+                "font-open-sans",
+                "w-40",
+                "h-9",
+                "mt-5",
+                "text-white",
+                "flex",
+                "items-center",
+                "justify-center"
+            );
+            listingButton.innerText = "View";
+            listingContainer.appendChild(listingButton);
+            listingCard.appendChild(listingContainer);
 
+            // Append card to container
+            listingCardContainer.appendChild(listingCard);
+        });
+    } catch (error) {
+        console.error("Error fetching or rendering auction listings:", error);
     }
 }
 
