@@ -20,6 +20,8 @@
     <link rel="manifest" href="/assets/site.webmanifest">
     <script src="/js/ui/hamburger.js" defer></script>
     <script src="/js/auth/logout.js" defer></script>
+    <script src="/js/ui/profileUi.js" defer></script>
+    <script src="/js/auction/profileListings.mjs" type="module"></script>
     <title>VaultBid | Profile</title>
 </head>
 
@@ -66,11 +68,11 @@
     <main class="flex flex-col items-center justify-center gap-1 flex-grow">
         <div class="mt-14 flex flex-col justify-center items-center text-white gap-7">
             <h1 class="font-roboto text-3xl font-bold">My Profile</h1>
-            <img class="rounded-full w-40" src="/images/placeholder-image.png" alt="Profile photo">
+            <img class="rounded-full w-40" alt="Profile photo" id="profileImg">
             <p class="underline font-open-sans">Update avatar image</p>
             <!-- Update avatar modal-->
 
-            <h2 class="font-bold text-2xl font-roboto">Username</h2>
+            <h2 class="font-bold text-2xl font-roboto" id="username">Username</h2>
             <button class="bg-slate-blue rounded-lg w-48 h-9 flex justify-center items-center py-5 px-6 cursor-pointer">
                 <p class="font-bold font-roboto">+ Add new listing</p>
             </button>
