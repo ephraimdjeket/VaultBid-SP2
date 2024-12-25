@@ -9,33 +9,33 @@ const registerFormEl = document.getElementById("register-form");
 
 
 async function registerFetch() {
-    const bodyData = {           
+    const bodyData = {
         name: registerNameInput.value,
         email: registerEmailInput.value,
         password: registerPasswordInput.value,
     }
-    if(registerAvatarUrl.value !== "") {
-        bodyData.avatar = {url: registerAvatarUrl.value};
+    if (registerAvatarUrl.value !== "") {
+        bodyData.avatar = { url: registerAvatarUrl.value };
     }
-    try{
-    const response = await fetch(`${API_BASE_URL}/auth/register`, {
-        method: "POST",
-        headers: {
-            "Content-Type":"application/json",
-        },
-        body: JSON.stringify(bodyData),
+    try {
+        const response = await fetch(`${API_BASE_URL}/auth/register`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(bodyData),
 
-    });
-    const json = await response.json();
-    if (!response.ok) {
-        console.log("Error:", json.errors[0].message);
-        return;
-    } else {
-        console.log("yes")
+        });
+        const json = await response.json();
+        if (!response.ok) {
+            console.log("Error:", json.errors[0].message);
+            return;
+        } else {
+            console.log("yes")
+        }
+    } catch (error) {
+        console.error(error.message);
     }
-} catch(error) {
-    console.error(error.message);
-}
 }
 
 registerFormEl.addEventListener("submit", (e) => {
