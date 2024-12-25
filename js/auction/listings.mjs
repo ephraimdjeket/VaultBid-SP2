@@ -21,10 +21,8 @@ async function auctionListings() {
         }
 
         const { data } = await response.json();
-        console.log("API Response Data:", data);
 
         data.forEach((item) => {
-            console.log("Rendering Listing:", item);
             const listingCard = document.createElement("div");
             listingCard.classList.add(
                 "bg-white",
@@ -36,7 +34,6 @@ async function auctionListings() {
                 "justify-center",
                 "items-left",
             );
-            console.log(item.media);
 
             // Add image
             const mediaUrl = item.media && item.media.length > 0 ? item.media[0].url : "/images/placeholder-image.png";
@@ -63,7 +60,10 @@ async function auctionListings() {
             // Add creation date
             const listingDateContainer = document.createElement("p");
             listingDateContainer.classList.add("font-open-sans");
-            const listingDate = null;
+            const originalDate = item.created;
+            const date = new Date(originalDate);
+            const formattedDate = date.toLocaleDateString("en-GB");
+            const listingDate = formattedDate;
             listingDateContainer.innerText = `Created: ${listingDate}`;
             listingContainer.appendChild(listingDateContainer);
 
