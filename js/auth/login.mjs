@@ -17,11 +17,10 @@ async function login() {
             }),
         })
         const json = await response.json();
-        console.log(json)
         if (!response.ok) {
             return json.errors[0].message;
         } else {
-            localStorage.setItem("name", json.data.name);
+            localStorage.setItem("user", JSON.stringify(json.data));
             localStorage.setItem("accessToken", json.data.accessToken);
             window.location.href = "/listing/";
         }
@@ -30,6 +29,8 @@ async function login() {
 
     }
 }
+
+const accessToken = localStorage.getItem("accessToken");
 
 loginFormEl.addEventListener("submit", (e) => {
     e.preventDefault();
