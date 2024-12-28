@@ -77,7 +77,7 @@ async function auctionListings() {
 
             // Add view button
             const listingButton = document.createElement("a");
-            listingButton.href = `/listing-details/${item.id}`;
+            listingButton.href = `/listing-details/?id=${item.id}`;
             listingButton.classList.add(
                 "list-button",
                 "bg-slate-blue",
