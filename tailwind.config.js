@@ -4,9 +4,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "charcoal":"#333333",
-        "golden-yellow":"#FFBF00",
-        "slate-blue":"#6A5ACD",
+        "charcoal": "#333333",
+        "golden-yellow": "#FFBF00",
+        "slate-blue": "#6A5ACD",
       },
 
       fontFamily: {
@@ -16,8 +16,10 @@ module.exports = {
     },
 
     maxWidth: {
-      "screen-1200": "1200px"
-    },
+      "screen-1200": "1200px",
+      "screen-850": "850px",
+
+    }
   },
   plugins: [],
 }
