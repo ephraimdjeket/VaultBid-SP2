@@ -1,6 +1,15 @@
 import { API_BASE_URL } from "../utils/apiConfig.mjs";
+import { singleProfile } from "../ui/userAPI.mjs";
 
-const mainContainer = document.getElementById("main-container");
+const listingImage = document.getElementById("listing-image");
+const listingTitle = document.getElementById("title");
+const listingDescription = document.getElementById("description");
+const listingSeller = document.getElementById("username");
+const listingEndDate = document.getElementById("date");
+const listingCurrentBid = document.getElementById("current-bid");
+const bidHistoryContainer = document.getElementById("bid-history");
+const allAmounts = [];
+
 
 async function listingDetails() {
     try {
@@ -31,69 +40,50 @@ async function listingDetails() {
 }
 
 function renderListingDetails(listing) {
-    const listingDetailContainer = document.createElement("div");
-    listingDetailContainer.classList.add("lg:flex", "flex-row", "justify-center", "items-center");
-    const listingDetail = document.createElement("div");
-    listingDetail.classList.add("lg:flex", "flex-row", "gap-10", "items-center");
-    const listingDetailImgContainer = document.createElement("div");
-    listingDetailImgContainer.classList.add("px-6", "flex", "flex-col", "items-center", "justify-center", "pt-9");
-    listingDetail.appendChild(listingDetailImgContainer);
-    const listingImg = document.createElement("img");
-    listingImg.style.maxWidth = "24rem";
-    listingImg.classList.add("block", "w-full", "max-w-md", "h-auto", "rounded-lg");
-    listingImg.src = listing.media[0].url || "/images/placeholder-image.png";
-    listingImg.alt = listing.media[0].alt || "placeholder image";
-    listingDetailImgContainer.appendChild(listingImg);
-    const listingContent = document.createElement("div");
-    listingContent.classList.add("flex", "flex-col", "items-center", "lg:items-start");
-    const listingTitle = document.createElement("h1");
-    listingTitle.classList.add("font-bold", "font-roboto", "text-3xl", "pt-9");
+    if (listing.media[0].url === null) {
+        listingImage.src = "/images/placeholder-image.png";
+    } else {
+        listingImage.src = listing.media[0].url;
+    }
+    if (listingImage.alt === null || listingImage === "") {
+        listingImage.alt = "An image";
+    } else {
+        listingImage.alt = listing.media[0].alt;
+    }
     listingTitle.innerText = `${listing.title}`;
-    const listingDescription = document.createElement("p");
-    listingDescription.classList.add("font-open-sans", "py-4");
-    listingDescription.style.maxWidth = "25rem";
-    listingDescription.innerText = `${listing.description}`.charAt(0).toUpperCase() + `${listing.description}`.slice(1);;
-    const listingUsername = document.createElement("p");
-    listingUsername.classList.add("font-open-sans", "pb-12");
-    listingUsername.innerText = `Seller: ${listing.seller.name}`;
-    const bidContainer = document.createElement("div");
-    bidContainer.classList.add("lg:flex", "flex-col", "items-start");
-    const bidDate = document.createElement("p");
-    bidDate.classList.add("font-open-sans", "font-bold", "pb-3");
-    const originalDate = listing.created;
+    listingDescription.style.maxWidth = "24rem";
+    listingDescription.innerText = `${listing.description}`.charAt(0).toUpperCase() + `${listing.description}`.slice(1);
+    listingSeller.innerText = `Seller: ${listing.seller.name}`;
+    const originalDate = listing.endsAt;
     const date = new Date(originalDate);
     const formattedDate = date.toLocaleDateString("en-GB");
     const originalBidDate = formattedDate;
-    bidDate.innerText = `${originalBidDate}`;
-    const currentBid = document.createElement("p");
-    currentBid.classList.add("font-open-sans", "pb-6", "font-bold");
-    currentBid.innerText = `Current bid: $${listing.bids[0].amount}`
+    listingEndDate.innerText = `${originalBidDate}`;
+    listing.bids.forEach((amount) => {
+        allAmounts.push(amount.amount);
+    });
+    const highestAmount = Math.max(...allAmounts);
+    listingCurrentBid.innerText = `Highest bid: $${highestAmount}`;
+    listing.bids.forEach((bids) => {
+        const bidderContainer = document.createElement("div");
+        bidderContainer.classList.add("flex", "flex-row", "justify-between", "py-4")
+        const bidderName = document.createElement("p");
+        bidderName.innerText = `${bids.bidder.name}`;
+        const bidderDate = document.createElement("p");
+        const originalDate = bids.created;
+        const date = new Date(originalDate);
+        const formattedDate = date.toLocaleDateString("en-GB");
+        const originalBidDate = formattedDate;
+        bidderDate.innerText = `${originalBidDate}`;
+        const bidderAmount = document.createElement("p");
+        bidderAmount.innerText = `$${bids.amount}`;
 
-    listingDetailContainer.appendChild(listingDetail);
-    listingDetailContainer.appendChild(listingContent);
-
-    listingContent.appendChild(listingTitle);
-    listingContent.appendChild(listingDescription);
-    listingContent.appendChild(listingUsername);
-    listingContent.appendChild(bidContainer);
-    listingContent.appendChild(currentBid);
-    mainContainer.appendChild(listingDetailContainer)
-
-
-    //     <!-- Listing Bid-->
-    //         <p class="font-open-sans pb-6">Current bid: <span class="font-bold">$50</span></p>
-    //         <form class="flex items-start">
-    //             <div class="flex flex-col gap-5 items-center">
-    //                 <label class="sr-only" for="bid-amount"></label>
-    //                 <input class="pl-3 border border-black h-9 w-44" type="text" name="bid-amount"
-    //                     id="bid-amount" required>
-    //                 <label class="sr-only" for="bid"></label>
-    //                 <input class="bg-slate-blue text-white font-bold h-9 w-44 font-open-sans" type="submit"
-    //                     value="Bid" name="bid">
-    //             </div>
-    //         </form>
-    //     </div>
-    // </div>
+        bidHistoryContainer.appendChild(bidderContainer);
+        bidderContainer.appendChild(bidderName);
+        bidderContainer.appendChild(bidderDate);
+        bidderContainer.appendChild(bidderAmount);
+    })
 }
 
+singleProfile();
 listingDetails();
