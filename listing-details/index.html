@@ -32,7 +32,8 @@
                         src="/images/vaultbid-yellow.png " alt="Vaultbid logo">
                     <div class="flex flex-col items-start text-white">
                         <p class=" text-2xl font-bold font-roboto">Vaultbid</p>
-                        <p class="font-roboto text-xs font-light max-sm:hidden md:block">Unlock the Best Deals, Bid
+                        <p class="font-roboto text-xs font-light max-sm:hidden md:block text-left">Unlock the Best
+                            Deals, Bid
                             with
                             Confidence.
                         </p>
@@ -47,7 +48,8 @@
             <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14" />
         </svg>
         <div class="max-sm:hidden  flex gap-10">
-            <p class="max-sm:hidden md:block text-white font-roboto text-lg">Credits: $<span>1000</span></p>
+            <p class="max-sm:hidden md:block text-white font-roboto text-lg">Credits: $<span class="credits"></span>
+            </p>
             <a href="/listing/" class="max-sm:hidden md:block text-white font-roboto text-lg">Listings</a>
             <a href="/profile/" class="max-sm:hidden md:block text-white font-roboto text-lg">Profile</a>
             <a href="/index.html"
@@ -56,8 +58,8 @@
     </header>
     <div class="bg-stone-500 w-full h-48 sm:hidden" id="menu">
         <div class="flex flex-col justify-around items-center py-4">
-            <p class="sm:hidden text-white font-roboto text-lg">Credits: $<span>1000</span></p>
-            <a href="/listing/" class="sm:hidden text-white font-roboto text-lg py-2">Listings</a>
+            <p class="sm:hidden text-white font-roboto text-lg">Credits: $<span class="credits-mobile"></span></p>
+            <a href=" /listing/" class="sm:hidden text-white font-roboto text-lg py-2">Listings</a>
             <a href="/profile/" class="sm:hidden text-white font-roboto text-lg py-2">Profile</a>
             <a href="/index.html"
                 class="sm:hidden bg-slate-blue text-white font-roboto flex items-center justify-center w-32 h-8 cursor-pointer py-2 logout">Logout</a>
@@ -65,24 +67,25 @@
     </div>
     <main class="bg-white lg:rounded-xl" id="main-container">
         <div class="lg:flex flex-row justify-center items-center">
-            <div class="lg:flex flex-row items-center gap-10">
+            <div class=" lg:flex flex-row items-center gap-10">
                 <div class="px-6 flex flex-col justify-center items-center pt-9"> <img class="block w-96 rounded-lg"
-                        src="/images/placeholder-image.png" alt="placeholder image">
+                        alt="placeholder image" id="listing-image" height="24rem" width="24rem">
                 </div>
 
                 <!-- Listing details-->
-                <div class="flex flex-col items-center lg:items-start">
-                    <h1 class="font-bold font-roboto text-3xl pt-9">Listing title</h1>
-                    <p class="font-bold font-open-sans py-4">Description of the listing item</p>
-                    <p class="font-bold font-open-sans pb-12">Username</p>
+                <div class="flex flex-col items-center lg:items-start text-center lg:text-left ">
+                    <h1 class="font-bold font-roboto text-3xl pt-9" id="title"></h1>
+                    <p class="font-bold font-open-sans py-4 leading-relaxed" id="description"></p>
+                    <p class="font-bold font-open-sans pb-12" id="username"></p>
                     <!-- Listing Bid-->
                     <div class="lg:flex flex-col items-start">
-                        <p class=" font-open-sans pb-3">Ends: <span class="font-bold">01/01/2024</span></p>
-                        <p class="font-open-sans pb-6">Current bid: <span class="font-bold">$50</span></p>
+                        <p class=" font-open-sans pb-3">Ends: <span id="date"></span></p>
+                        <p class="font-open-sans pb-6"><span id="current-bid"></span>
+                        </p>
                         <form class="flex items-start">
                             <div class="flex flex-col gap-5 items-center">
                                 <label class="sr-only" for="bid-amount"></label>
-                                <input class="pl-3 border border-black h-9 w-44" type="text" name="bid-amount"
+                                <input class="pl-3 border border-black h-9 w-44" type="number" name="bid-amount"
                                     id="bid-amount" required>
                                 <label class="sr-only" for="bid"></label>
                                 <input class="bg-slate-blue text-white font-bold h-9 w-44 font-open-sans" type="submit"
@@ -96,7 +99,8 @@
             </div>
         </div>
         <!-- Bid history -->
-        <div class="flex-col justify-center md:flex items-left px-6 pt-24 pb-10 lg:max-w-screen-730 mx-auto">
+        <div class="flex-col justify-center text-center md:flex items-left px-6 pt-11 pb-10 lg:max-w-screen-850 mx-auto"
+            id="bid-history">
             <h2 class="font-bold text-2xl py-9">Bid History<h2>
                     <!-- Bid history info-->
                     <div class="flex flex-row justify-between py-2">
@@ -108,42 +112,6 @@
                         </span>
                         <span class="bid-amount">
                             <p class="font-bold">Amount:</p>
-                        </span>
-                    </div>
-                    <!-- Bid history info-->
-                    <div class="flex flex-row justify-between py-4">
-                        <span class="bid-name">
-                            <p>John</p>
-                        </span>
-                        <span class="bid-date">
-                            <p>03/12/2024</p>
-                        </span>
-                        <span class="bid-amount">
-                            <p>$100</p>
-                        </span>
-                    </div>
-                    <!-- Bid history info-->
-                    <div class="flex flex-row justify-between py-4">
-                        <span class="bid-name">
-                            <p>John</p>
-                        </span>
-                        <span class="bid-date">
-                            <p>03/12/2024</p>
-                        </span>
-                        <span class="bid-amount">
-                            <p>$100</p>
-                        </span>
-                    </div>
-                    <!-- Bid history info-->
-                    <div class="flex flex-row justify-between py-4">
-                        <span class="bid-name">
-                            <p>John</p>
-                        </span>
-                        <span class="bid-date">
-                            <p>03/12/2024</p>
-                        </span>
-                        <span class="bid-amount">
-                            <p>$100</p>
                         </span>
                     </div>
         </div>
