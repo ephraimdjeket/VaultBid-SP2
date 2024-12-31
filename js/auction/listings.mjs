@@ -1,4 +1,4 @@
-import { API_BASE_URL } from "../utils/apiConfig.mjs";
+import { API_BASE_URL, API_AUCTION_LISTINGS } from "../utils/apiConfig.mjs";
 import { singleProfile } from "../ui/userAPI.mjs";
 
 const listingCardContainer = document.getElementById("listing-container");
@@ -10,7 +10,7 @@ async function auctionListings() {
     }
 
     try {
-        const response = await fetch(`${API_BASE_URL}/auction/listings`, {
+        const response = await fetch(`${API_BASE_URL}${API_AUCTION_LISTINGS}?_active=true`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -22,7 +22,6 @@ async function auctionListings() {
         }
 
         const { data } = await response.json();
-
         data.forEach((item) => {
             const listingCard = document.createElement("div");
             listingCard.classList.add(
