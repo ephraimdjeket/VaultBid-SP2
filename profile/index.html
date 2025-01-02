@@ -20,7 +20,7 @@
     <link rel="manifest" href="/assets/site.webmanifest">
     <script src="/js/ui/hamburger.js" defer></script>
     <script src="/js/auth/logout.js" defer></script>
-    <script src="/js/auction/profileListings.mjs" type="module"></script>
+    <script src="/js/auction/userProfile.mjs" type="module"></script>
     <title>VaultBid | Profile</title>
 </head>
 
@@ -56,7 +56,7 @@
                 class="max-sm:hidden bg-slate-blue text-white font-roboto flex items-center justify-center w-32 h-8 cursor-pointer logout">Logout</a>
         </div>
     </header>
-    <div class="bg-stone-500 w-full h-48 sm:hidden" id="menu">
+    <div class="bg-charcoal w-full h-48 sm:hidden border-t border-white" id="menu">
         <div class="flex flex-col justify-around items-center py-4">
             <p class="sm:hidden text-white font-roboto text-lg">Credits: $<span class="credits-mobile"></span></p>
             <a href="/listing/" class="sm:hidden text-white font-roboto text-lg py-2">Listings</a>
@@ -82,13 +82,23 @@
         <!--My Listings-->
         <h2 class="text-white font-open-sans font-light text-3xl max-sm:text-center mx-9 pt-20">My Listings</h2>
         <div class="flex flex-wrap gap-2 max-sm:flex-col items-center mx-9" id="listing-container">
+            <!-- Listing card-->
+            <!-- <div class="bg-white rounded-xl w-64 mt-16 flex flex-col justify-center items-left ">
+                <img class="rounded-t-xl block w-full" src="/images/placeholder-image.png" alt="placeholder image">
+                <div class="flex flex-col gap-2 pl-7 py-9">
+                    <h2 class="list-title font-bold text-xl font-roboto">Title of listing</h2>
+                    <p class="font-open-sans">Ends: <span class="list-date font-bold">01/01/2024 </span></p>
+                    <p class="font-open-sans">Current bid: <span class="list-price font-bold">$8</span></p>
+                    <a href="/listing-details"
+                        class="list-button bg-slate-blue font-bold font-open-sans w-40 h-9 mt-5 text-white flex items-center justify-center">View</a>
+                </div>
+            </div> -->
         </div>
-
         <!--My Wins-->
         <h2 class="text-white font-open-sans font-light text-3xl max-sm:text-center mx-9 pt-20">My Wins</h2>
         <div class="flex flex-wrap gap-2 max-sm:flex-col items-center mx-9">
             <!-- Listing card-->
-            <div class="bg-white rounded-xl w-64 mt-16 flex flex-col justify-center items-left ">
+            <!-- <div class="bg-white rounded-xl w-64 mt-16 flex flex-col justify-center items-left ">
                 <img class="rounded-t-xl block w-full" src="/images/placeholder-image.png" alt="placeholder image">
                 <div class="flex flex-col gap-2 pl-7 py-9">
                     <h2 class="list-title font-bold text-xl font-roboto">Title of listing</h2>
@@ -97,44 +107,11 @@
                     <a href="/listing-details"
                         class="list-button bg-slate-blue font-bold font-open-sans w-40 h-9 mt-5 text-white flex items-center justify-center">View</a>
                 </div>
-            </div>
-            <!-- Listing card -->
-            <div class="bg-white rounded-xl w-64 mt-16 flex flex-col justify-center items-left">
-                <img class="rounded-t-xl block w-full" src="/images/placeholder-image.png" alt="placeholder image">
-                <div class="flex flex-col gap-2 pl-7 py-9">
-                    <h2 class="list-title font-bold text-xl font-roboto">Title of listing</h2>
-                    <p class="font-open-sans">Ends: <span class="list-date font-bold">01/01/2024 </span></p>
-                    <p class="font-open-sans">Current bid: <span class="list-price font-bold">$8</span></p>
-                    <a href="/listing-details"
-                        class="list-button bg-slate-blue font-bold font-open-sans w-40 h-9 mt-5 text-white flex items-center justify-center">View</a>
-                </div>
-            </div>
-            <!-- Listing card -->
-            <div class="bg-white rounded-xl w-64 mt-16 max-sm:flex flex-col justify-center items-left">
-                <img class="rounded-t-xl block w-full" src="/images/placeholder-image.png" alt="placeholder image">
-                <div class="flex flex-col gap-2 pl-7 py-9">
-                    <h2 class="list-title font-bold text-xl font-roboto md:text-left">Title of listing</h2>
-                    <p class="font-open-sans">Ends: <span class="list-date font-bold">01/01/2024 </span></p>
-                    <p class="font-open-sans">Current bid: <span class="list-price font-bold">$8</span></p>
-                    <a href="/listing-details"
-                        class="list-button bg-slate-blue font-bold font-open-sans w-40 h-9 mt-5 text-white flex items-center justify-center">View</a>
-                </div>
-            </div>
-            <!-- Listing card -->
-            <div class="bg-white rounded-xl w-64 mt-16 max-sm:flex flex-col justify-center items-left">
-                <img class="rounded-t-xl block w-full" src="/images/placeholder-image.png" alt="placeholder image">
-                <div class="flex flex-col gap-2 pl-7 py-9">
-                    <h2 class="list-title font-bold text-xl font-roboto md:text-left">Title of listing</h2>
-                    <p class="font-open-sans">Ends: <span class="list-date font-bold">01/01/2024 </span></p>
-                    <p class="font-open-sans">Current bid: <span class="list-price font-bold">$8</span></p>
-                    <a href="/listing-details"
-                        class="list-button bg-slate-blue font-bold font-open-sans w-40 h-9 mt-5 text-white flex items-center justify-center">View</a>
-                </div>
-            </div>
+            </div> -->
         </div>
     </main>
     <footer class="flex justify-center gap-6 py-10">
-        <p class="text-white text-center">© Copyright VaultBid 2024</p>
+        <p class="text-white text-center">© Copyright VaultBid 2025</p>
         <a class="cursor-pointer" href="https://github.com/ephraimdjeket" target="_blank"><svg
                 class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                 width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
