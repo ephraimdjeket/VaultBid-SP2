@@ -1,5 +1,5 @@
 import { API_BASE_URL, API_AUCTION_LISTINGS } from "../utils/apiConfig.mjs";
-import { singleProfile } from "../ui/userAPI.mjs";
+
 
 const listingCardContainer = document.getElementById("listing-container");
 
@@ -102,5 +102,5 @@ async function auctionListings() {
     }
 }
 
-singleProfile();
+
 auctionListings();
