@@ -79,7 +79,6 @@ async function listingDetails() {
 
         const { data } = await response.json();
         const listing = data.find((item) => item.id === id);
-        console.log(listing)
         if (!listing) {
             throw new Error("No listing found with the given ID.");
         }
