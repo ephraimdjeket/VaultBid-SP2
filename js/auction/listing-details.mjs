@@ -43,17 +43,17 @@ async function bidOnItem(id) {
 
         const result = await response.json();
         bidSuccessfullMessage.classList.remove("hidden");
-
+        bidSuccessfullMessage.innerText = "You've successfully bid on this item"
         setTimeout(() => {
             bidSuccessfullMessage.classList.add("hidden");
         }, 3000);
 
-        // Optionally reload listing details to show updated bid history
         listingDetails();
         singleProfile();
     } catch (error) {
-        console.error("Error placing bid:", error);
-        alert(`Error: ${error.message}`);
+        bidSuccessfullMessage.classList.add("hidden");
+        const errorMessage = `${error.message}`;
+        displayError(errorMessage);
     }
 }
 
@@ -65,8 +65,7 @@ async function listingDetails() {
         if (!id) {
             throw new Error("No ID found in the URL.");
         }
-
-        const response = await fetch(`${API_BASE_URL}${API_AUCTION_LISTINGS}/?_seller=true&_bids=true&_active=true`, {
+        const response = await fetch(`${API_BASE_URL}${API_AUCTION_LISTINGS}?_seller=true&_bids=true&sort=created&sortOrder=desc`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -85,10 +84,9 @@ async function listingDetails() {
 
         renderListingDetails(listing);
 
-        // Add submit event listener for the form
         biddingFormEl.addEventListener("submit", (e) => {
             e.preventDefault();
-            bidOnItem(listing.id); // Pass listing ID to bidOnItem
+            bidOnItem(listing.id);
         });
     } catch (error) {
         const errorMessage = `${error.message}`;
@@ -109,8 +107,8 @@ function renderListingDetails(listing) {
     } else {
         listingImage.alt = listing.media[0].alt;
     }
-    listingTitle.innerText = listing.title && listing.title.length > 12
-        ? listing.title.substring(0, 24) + "..."
+    listingTitle.innerText = listing.title && listing.title.length > 40
+        ? listing.title.substring(0, 40) + "..."
         : listing.title || "Untitled Listing";
     listingDescription.style.maxWidth = "24rem";
     if (!listing.description.includes(" ")) {
@@ -126,11 +124,11 @@ function renderListingDetails(listing) {
     const date = new Date(originalDate);
     const formattedDate = date.toLocaleDateString("en-GB");
     const originalBidDate = formattedDate;
-    listingEndDate.innerText = `${originalBidDate} `;
+    listingEndDate.innerText = `${originalBidDate}`;
     listing.bids.forEach((amount) => {
         allAmounts.push(amount.amount);
     });
-    const highestAmount = Math.max(...allAmounts);
+    const highestAmount = allAmounts.length > 0 ? Math.max(...allAmounts) : 0;
     listingCurrentBid.innerText = `Highest bid: $${highestAmount} `;
     listing.bids.forEach((bids) => {
         const bidderContainer = document.createElement("div");
