@@ -66,9 +66,6 @@
         </div>
     </div>
     <main class="bg-white lg:rounded-xl" id="main-container">
-        <p class="text-center bg-green-700 py-3 text-white font-bold hidden" id="bid-successful">Your bid was
-            placed
-            successfully!</p>
         <div class="lg:flex flex-row justify-center items-center">
             <div class=" lg:flex flex-row gap-10 items-start">
                 <div class="px-6 flex flex-col justify-center items-center pt-9"> <img class="block w-96 rounded-lg"
@@ -77,16 +74,21 @@
 
                 <!-- Listing details-->
                 <div class="flex flex-col items-center lg:items-start text-center lg:text-left ">
-                    <h1 class="font-bold font-roboto text-3xl pt-9" id="title"></h1>
-                    <p class="font-bold font-open-sans py-4 leading-relaxed" id="description"></p>
-                    <p class="font-bold font-open-sans pb-12" id="username"></p>
+                    <h1 class="font-bold font-roboto text-2xl pt-9 max-sm:text-xl" id="title"></h1>
+                    <p class="font-open-sans py-3 leading-relaxed" id="description"></p>
+                    <p class="font-open-sans pb-12" id="username"></p>
                     <!-- Listing Bid-->
                     <div class="lg:flex flex-col items-start">
                         <p class=" font-open-sans pb-3">Ends: <span id="date"></span></p>
                         <p class="font-open-sans pb-6"><span id="current-bid"></span>
                         </p>
                         <form class="flex items-start" id="bid-form">
-                            <div class="flex flex-col gap-5 items-center">
+                            <div class="flex flex-col gap-5 max-lg:items-center">
+                                <div class=" text-center bg-red-400 border-4 border-red-500 mx-auto w-96 px-5 py-4 my-3 font-bold  hidden "
+                                    id="errorMessage">
+                                </div>
+                                <div class=" text-center bg-green-400 border-4 border-green-500 mx-auto w-full px-5 py-4 my-3 font-bold hidden"
+                                    id="bid-successful"></div>
                                 <label class="sr-only" for="bid-amount"></label>
                                 <input class="pl-3 border border-black h-9 w-44" type="number" name="bid-amount"
                                     id="bid-amount" required>
@@ -99,10 +101,10 @@
                 </div>
             </div>
         </div>
-        <p id="errorMessage"></p>
+
         <!-- Bid history -->
-        <div
-            class="flex-col justify-center text-center md:flex items-left px-6 pt-11 pb-10 lg:max-w-screen-850 mx-auto">
+        <div class=" flex-col justify-center text-center md:flex items-left px-6 pt-28 pb-10 lg:max-w-screen-850
+                                        mx-auto">
             <div class="flex flex-row justify-between py-2 border-b font-bold">
                 <p class="text-left w-1/3">Bidder:</p>
                 <p class="text-center w-1/3">Date:</p>
