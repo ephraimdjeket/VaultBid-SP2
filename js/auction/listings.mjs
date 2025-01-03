@@ -1,16 +1,17 @@
 import { API_BASE_URL, API_AUCTION_LISTINGS } from "../utils/apiConfig.mjs";
-
+import { singleProfile } from "../ui/profileListings.mjs";
+import { displayError } from "../ui/errorHandler.mjs";
 
 const listingCardContainer = document.getElementById("listing-container");
 
 async function auctionListings() {
     if (!listingCardContainer) {
-        console.error("Listing container element not found.");
+        displayError("Listing container element not found.");
         return;
     }
 
     try {
-        const response = await fetch(`${API_BASE_URL}${API_AUCTION_LISTINGS}?_active=true`, {
+        const response = await fetch(`${API_BASE_URL}${API_AUCTION_LISTINGS}?_seller=true&_bids=true&sort=created&sortOrder=desc`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -18,7 +19,9 @@ async function auctionListings() {
         });
 
         if (!response.ok) {
-            throw new Error(`Error: ${response.status} ${response.statusText}`);
+            const errorData = await response.json();
+            const errorMessage = errorData.errors[0].message || "Failed to fetch";
+            throw new Error(errorMessage);
         }
 
         const { data } = await response.json();
@@ -98,9 +101,9 @@ async function auctionListings() {
             listingCardContainer.appendChild(listingCard);
         });
     } catch (error) {
-        console.error("Error fetching or rendering auction listings:", error);
+        displayError(error.message);
     }
 }
 
-
+singleProfile();
 auctionListings();
