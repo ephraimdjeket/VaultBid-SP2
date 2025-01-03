@@ -1,4 +1,5 @@
 import { API_BASE_URL } from "../utils/apiConfig.mjs";
+import { displayError } from "./errorHandler.mjs";
 
 const creditDisplay = document.querySelector(".credits");
 const creditDisplayMobile = document.querySelector(".credits-mobile");
@@ -11,15 +12,19 @@ const user = JSON.parse(userName);
 export async function singleProfile() {
     try {
         const response = await fetch(`${API_BASE_URL}/auction/profiles/${user.name}`, authHeaders);
-        if (!response.ok) { throw new Error("Failed to fetch listings"); }
+        if (!response.ok) {
+            const errorData = await response.json();
+            const errorMessage = errorData.errors[0].message || "Failed to fetch";
+            throw new Error(errorMessage);
+        }
         const { data } = await response.json();
         creditDisplay.textContent = data.credits;
         creditDisplayMobile.textContent = data.credits;
 
 
     } catch (error) {
-        console.log("Error fetching listings:", error);
-        return [];
+        displayError(error.message) || "An unknown error occurred while fetching";
+        return;
     }
 }
 
@@ -36,14 +41,18 @@ export const authHeaders = {
 export async function fetchListings() {
     try {
         const response = await fetch(`${API_BASE_URL}/auction/profiles/${user.name}/listings`, authHeaders);
-        if (!response.ok) throw new Error("Failed to fetch listings");
+        if (!response.ok) {
+            const errorData = await response.json();
+            const errorMessage = errorData.errors[0].message || "Failed to fetch";
+            throw new Error(errorMessage);
+        }
         const { data } = await response.json();
         data.forEach((item) => {
             listItem(item)
         });
 
     } catch (error) {
-        console.log("Error fetching listings:", error);
+        displayError(error.message) || "An unknown error occurred while fetching";
         return;
     }
 }
@@ -58,7 +67,7 @@ export async function fetchWins() {
         });
 
     } catch (error) {
-        console.log("Error fetching listings:", error);
+        displayError(error.message) || "An unknown error occurred while fetching";
         return;
     }
 }
@@ -117,7 +126,7 @@ export function listItem(item) {
 
     // Add view button
     const listingButton = document.createElement("a");
-    listingButton.href = `/listing-details/${item.id}`;
+    listingButton.href = `/listing-details/?id=${item.id}`;
     listingButton.classList.add(
         "list-button",
         "bg-slate-blue",
