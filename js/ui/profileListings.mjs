@@ -7,7 +7,7 @@ export const accessToken = localStorage.getItem("accessToken");
 export const apiKey = "b5f7559e-bbe6-4f1d-8d32-2b5618d9a720";
 const listingCardContainer = document.getElementById("listing-container");
 const userName = localStorage.getItem("user");
-const user = JSON.parse(userName);
+export const user = JSON.parse(userName);
 
 export async function singleProfile() {
     try {
