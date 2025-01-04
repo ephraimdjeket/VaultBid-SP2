@@ -47,11 +47,17 @@
             viewBox="0 0 24 24">
             <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14" />
         </svg>
+        <svg class="cursor-pointer w-6 h-6 text-gray-800 dark:text-white hidden sm:hidden" aria-hidden="true" <svg
+            class="cursor-pointer w-6 h-6 text-gray-800 dark:text-white block sm:hidden" id="close"
+            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M6 18 17.94 6M18 18 6.06 6" />
+        </svg>
         <div class="max-sm:hidden  flex gap-10">
             <a href="/listing/" class="max-sm:hidden md:block text-white font-roboto text-lg">Listings</a>
         </div>
     </header>
-    <div class="bg-charcoal w-full h-48 hidden border-t  border-white" id="menu">
+    <div class="bg-charcoal w-full hidden border-t  border-white" id="menu">
         <div class="flex flex-col justify-around items-center py-4">
             <a href="/listing/" class="sm:hidden text-white font-roboto text-lg">Listing</a>
         </div>
@@ -76,6 +82,9 @@
                         class="cursor-auto underline"><a href="registration/">Register here</a></span></p>
             </div>
         </form>
+        <div class=" text-center bg-red-400 border-4 border-red-500 mx-auto min-w-60 md:w-72 px-5 py-4 my-3 font-bold  hidden "
+            id="error-message">
+        </div>
     </main>
     <footer class="flex justify-center gap-6 py-10">
         <p class="text-white text-center">© Copyright VaultBid 2025</p>
