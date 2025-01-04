@@ -21,6 +21,7 @@
     <script src="/js/ui/hamburger.js" defer></script>
     <script src="/js/auth/logout.js" defer></script>
     <script src="/js/auction/userProfile.mjs" type="module"></script>
+    <script type="module" src="/js/ui/avatarModal.mjs"></script>
     <title>VaultBid | Profile</title>
 </head>
 
@@ -48,6 +49,12 @@
             viewBox="0 0 24 24">
             <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14" />
         </svg>
+        <svg class="cursor-pointer w-6 h-6 text-gray-800 dark:text-white hidden sm:hidden" aria-hidden="true" <svg
+            class="cursor-pointer w-6 h-6 text-gray-800 dark:text-white block sm:hidden" id="close"
+            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M6 18 17.94 6M18 18 6.06 6" />
+        </svg>
         <div class="max-sm:hidden  flex gap-10">
             <p class="max-sm:hidden md:block text-white font-roboto text-lg">Credits: $<span class="credits"></span></p>
             <a href="/listing/" class="max-sm:hidden md:block text-white font-roboto text-lg">Listings</a>
@@ -56,7 +63,7 @@
                 class="max-sm:hidden bg-slate-blue text-white font-roboto flex items-center justify-center w-32 h-8 cursor-pointer logout">Logout</a>
         </div>
     </header>
-    <div class="bg-charcoal w-full h-48 sm:hidden border-t border-white" id="menu">
+    <div class="bg-charcoal w-full sm:hidden border-t border-white" id="menu">
         <div class="flex flex-col justify-around items-center py-4">
             <p class="sm:hidden text-white font-roboto text-lg">Credits: $<span class="credits-mobile"></span></p>
             <a href="/listing/" class="sm:hidden text-white font-roboto text-lg py-2">Listings</a>
@@ -66,19 +73,46 @@
         </div>
     </div>
     <main class="flex flex-col items-center justify-center gap-1 flex-grow">
-        <div class="mt-14 flex flex-col justify-center items-center text-white gap-7">
+        <!-- Update avatar modal-->
+        <div class="fixed z-10 inset-0 hidden" id="modal-avatar">
+            <div class="flex items-center justify-center min-h-screen bg-gray-500 bg-opacity-75 transition-all"
+                id="modal-overlay">
+                <div class="flex flex-col items-center bg-charcoal w-80 h-72 relative rounded-lg mx-7 px-8">
+                    <svg id="exit-avatarmodal"
+                        class="absolute top-5 right-6 w-8 h-8 text-gray-800 dark:text-white cursor-pointer"
+                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                        viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18 17.94 6M18 18 6.06 6" />
+                    </svg>
+                    <form class="flex flex-col w-full h-full justify-center" action="#" id="update-avatar">
+                        <label class="text-white text-xl font-open-sans pb-3" for="image-url">Avatar Image Url</label>
+                        <div class="flex flex-col gap-5">
+                            <input class="h-9" type="text" id="image-url" name="image-url" required>
+                            <input class="bg-slate-blue font-open-sans text-white h-9 cursor-pointer" type="submit"
+                                name="submit" id="submit">
+                        </div>
+                        <div class=" text-center bg-green-400 border-4 border-green-500 mx-auto  px-5 py-2 my-3 font-bold w-full hidden"
+                            id="image-successful"></div>
+                        <div class=" text-center bg-red-400 border-4 border-red-500 mx-auto  px-5 py-2 my-3 font-bold w-full hidden"
+                            id="error-message-avatar">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="mt-14 flex flex-col justify-center items-center text-white gap-5">
             <h1 class="font-roboto text-3xl font-bold">My Profile</h1>
-            <img class="rounded-full w-40" alt="Profile photo" id="profileImg">
-            <p class="underline font-open-sans">Update avatar image</p>
-            <!-- Update avatar modal-->
-
-            <h2 class="font-bold text-2xl font-roboto" id="username">Username</h2>
+            <img class=" w-96" alt="Profile photo" id="profileImg">
+            <h2 class="font-bold text-4xl font-roboto" id="username"></h2>
+            <p class=" text-xl font-roboto" id="bio"></p>
+            <p class="underline font-open-sans cursor-pointer" id="open-avatarmodal">Update avatar image</p>
             <button class="bg-slate-blue rounded-lg w-48 h-9 flex justify-center items-center py-5 px-6 cursor-pointer">
                 <p class="font-bold font-roboto">+ Add new listing</p>
             </button>
         </div>
-        <div class=" text-center bg-red-400 border-4 border-red-500 mx-auto w-full px-5 py-4 my-3 font-bold  hidden "
-            id="errorMessage">
+        <div class=" text-center bg-red-400 border-4 border-red-500 mx-auto w-96 px-5 py-4 my-3 font-bold  hidden"
+            id="error-message">
         </div>
         <!--My Listings-->
         <h2 class="text-white font-open-sans font-light text-3xl max-sm:text-center mx-9 pt-20">My Listings</h2>
