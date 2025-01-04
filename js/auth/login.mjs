@@ -1,4 +1,5 @@
 import { API_BASE_URL, API_AUTH, API_LOGIN } from "../utils/apiConfig.mjs";
+import { displayError } from "../ui/errorHandler.mjs";
 
 const loginEmailInput = document.getElementById("login-email");
 const loginPasswordInput = document.getElementById("login-password");
@@ -18,7 +19,10 @@ async function login() {
         })
         const json = await response.json();
         if (!response.ok) {
-            return json.errors[0].message;
+            const errorMessage = json.errors[0].message || "Failed to login";
+            displayError(errorMessage);
+            return;
+
         } else {
             localStorage.setItem("user", JSON.stringify(json.data));
             localStorage.setItem("accessToken", json.data.accessToken);
@@ -26,11 +30,10 @@ async function login() {
         }
 
     } catch (error) {
-
+        const errorMessage = `An error occurred: ${error.message}`;
+        displayError(errorMessage);
     }
 }
-
-const accessToken = localStorage.getItem("accessToken");
 
 loginFormEl.addEventListener("submit", (e) => {
     e.preventDefault();
