@@ -77,7 +77,7 @@
         <div class="fixed z-10 inset-0 hidden" id="modal-avatar">
             <div class="flex items-center justify-center min-h-screen bg-gray-500 bg-opacity-75 transition-all"
                 id="modal-overlay">
-                <div class="flex flex-col items-center bg-charcoal w-80 h-72 relative rounded-lg mx-7 px-8">
+                <div class="flex flex-col items-center bg-charcoal w-96 h-80 md:h-64 relative rounded-lg mx-7 px-8">
                     <svg id="exit-avatarmodal"
                         class="absolute top-5 right-6 w-8 h-8 text-gray-800 dark:text-white cursor-pointer"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
@@ -88,12 +88,10 @@
                     <form class="flex flex-col w-full h-full justify-center" action="#" id="update-avatar">
                         <label class="text-white text-xl font-open-sans pb-3" for="image-url">Avatar Image Url</label>
                         <div class="flex flex-col gap-5">
-                            <input class="h-9" type="text" id="image-url" name="image-url" required>
+                            <input class="h-9 pl-3" type="text" id="image-url" name="image-url" required>
                             <input class="bg-slate-blue font-open-sans text-white h-9 cursor-pointer" type="submit"
                                 name="submit" id="submit">
                         </div>
-                        <div class=" text-center bg-green-400 border-4 border-green-500 mx-auto  px-5 py-2 my-3 font-bold w-full hidden"
-                            id="image-successful"></div>
                         <div class=" text-center bg-red-400 border-4 border-red-500 mx-auto  px-5 py-2 my-3 font-bold w-full hidden"
                             id="error-message-avatar">
                         </div>
@@ -103,7 +101,7 @@
         </div>
         <div class="mt-14 flex flex-col justify-center items-center text-white gap-5">
             <h1 class="font-roboto text-3xl font-bold">My Profile</h1>
-            <img class=" w-96" alt="Profile photo" id="profileImg">
+            <img class="rounded-full w-64 h-64 object-cover" alt="Profile photo" id="profileImg">
             <h2 class="font-bold text-4xl font-roboto" id="username"></h2>
             <p class=" text-xl font-roboto" id="bio"></p>
             <p class="underline font-open-sans cursor-pointer" id="open-avatarmodal">Update avatar image</p>
