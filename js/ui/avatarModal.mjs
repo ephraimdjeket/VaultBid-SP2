@@ -54,11 +54,9 @@ async function updateAvatarURL() {
         } else {
             user.avatar.url = avatarInputURL.value;
             localStorage.setItem("user", JSON.stringify(user));
-            imageSuccessfulContainer.classList.remove("hidden");
-            imageSuccessfulContainer.innerText = "Image successfully uploaded";
-            setTimeout(() => {
-                imageSuccessfulContainer.classList.add("hidden");
-            }, 3000)
+            window.location.href = "/profile";
+
+
         }
 
 
@@ -69,7 +67,6 @@ async function updateAvatarURL() {
 };
 
 updateAvatarEl.addEventListener("submit", (e) => {
-    imageSuccessfulContainer.classList.add("hidden");
     e.preventDefault();
     updateAvatarURL();
 });
