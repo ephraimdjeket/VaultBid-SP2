@@ -25,6 +25,10 @@ async function auctionListings() {
         }
 
         const { data } = await response.json();
+        data.forEach((item, index) => {
+            console.log(`Item ${index}:`, item);
+            console.log(`Item ${index} media:`, item.media);
+        });
         data.forEach((item) => {
             const listingCard = document.createElement("div");
             listingCard.classList.add(
@@ -40,11 +44,12 @@ async function auctionListings() {
 
             // Add image
             const mediaUrl = item.media && item.media.length > 0 ? item.media[0].url : "/images/placeholder-image.png";
+            const mediaAlt = item.media && item.media.length > 0 ? item.media[0].alt : "Placeholder Image";
             const listingCardImg = document.createElement("img");
             listingCardImg.style.height = "12rem";
             listingCardImg.classList.add("rounded-t-xl", "block", "w-full", "object-cover");
             listingCardImg.src = mediaUrl;
-            listingCardImg.alt = item.media && item.media.length > 0 ? item.media[0].alt : "Placeholder Image";
+            listingCardImg.alt = mediaAlt;
             listingCard.appendChild(listingCardImg);
 
             // Add card information container
@@ -105,5 +110,5 @@ async function auctionListings() {
     }
 }
 
-singleProfile();
 auctionListings();
+singleProfile();
