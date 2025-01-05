@@ -97,16 +97,12 @@ async function listingDetails() {
 
 
 function renderListingDetails(listing) {
-    if (listing.media[0].url === null) {
+    if (!listing.media || listing.media.length === 0 || !listing.media[0]?.url) {
         listingImage.src = "/images/placeholder-image.png";
     } else {
         listingImage.src = listing.media[0].url;
     }
-    if (listingImage.alt === null || listingImage === "") {
-        listingImage.alt = "An image";
-    } else {
-        listingImage.alt = listing.media[0].alt;
-    }
+    listingImage.alt = listing.media?.[0]?.alt || "An image";
     listingTitle.innerText = listing.title && listing.title.length > 40
         ? listing.title.substring(0, 40) + "..."
         : listing.title || "Untitled Listing";
@@ -151,7 +147,5 @@ function renderListingDetails(listing) {
     });
 };
 
-
-
-singleProfile();
 listingDetails();
+singleProfile();
