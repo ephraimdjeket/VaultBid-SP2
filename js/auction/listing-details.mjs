@@ -1,6 +1,7 @@
 import { API_BASE_URL, API_AUCTION_LISTINGS } from "../utils/apiConfig.mjs";
 import { singleProfile, accessToken, apiKey } from "../ui/profileListings.mjs";
 import { displayError } from "../ui/errorHandler.mjs";
+import { userLoggedIn, isLoggedIn, isNotLoggedIn, bidSection, visitorMessage } from "../ui/userLoggedIn.mjs";
 
 const listingImage = document.getElementById("listing-image");
 const listingTitle = document.getElementById("title");
@@ -13,6 +14,18 @@ const allAmounts = [];
 const bidAmount = document.getElementById("bid-amount");
 const biddingFormEl = document.getElementById("bid-form");
 const bidSuccessfullMessage = document.getElementById("bid-successful");
+const spinner = document.querySelector(".status");
+
+if (userLoggedIn) {
+    isLoggedIn();
+    singleProfile();
+    bidSection.classList.remove("hidden");
+} else {
+    isNotLoggedIn();
+    bidSection.classList.add("hidden");
+    visitorMessage.classList.remove("hidden");
+    visitorMessage.innerText = "Login to bid 😊";
+}
 
 async function bidOnItem(id) {
     try {
@@ -59,6 +72,7 @@ async function bidOnItem(id) {
 
 async function listingDetails() {
     try {
+        spinner.classList.remove("hidden");
         const urlParams = new URLSearchParams(window.location.search);
         const id = urlParams.get("id");
 
@@ -75,7 +89,7 @@ async function listingDetails() {
         if (!response.ok) {
             throw new Error(`Error: ${response.status} ${response.statusText}`);
         }
-
+        spinner.classList.add("hidden");
         const { data } = await response.json();
         const listing = data.find((item) => item.id === id);
         if (!listing) {
@@ -114,7 +128,6 @@ function renderListingDetails(listing) {
             listing.description.charAt(0).toUpperCase() +
             listing.description.slice(1);
     };
-
     listingSeller.innerText = `Seller: ${listing.seller.name} `;
     const originalDate = listing.endsAt;
     const date = new Date(originalDate);
@@ -148,4 +161,3 @@ function renderListingDetails(listing) {
 };
 
 listingDetails();
-singleProfile();
