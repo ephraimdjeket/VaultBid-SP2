@@ -1,8 +1,16 @@
 import { API_BASE_URL, API_AUCTION_LISTINGS } from "../utils/apiConfig.mjs";
 import { singleProfile } from "../ui/profileListings.mjs";
 import { displayError } from "../ui/errorHandler.mjs";
-
+import { userLoggedIn, isLoggedIn, isNotLoggedIn } from "../ui/userLoggedIn.mjs";
+const spinner = document.querySelector(".status");
 const listingCardContainer = document.getElementById("listing-container");
+
+if (userLoggedIn) {
+    isLoggedIn();
+    singleProfile();
+} else {
+    isNotLoggedIn();
+}
 
 async function auctionListings() {
     if (!listingCardContainer) {
@@ -11,6 +19,7 @@ async function auctionListings() {
     }
 
     try {
+        spinner.classList.remove("hidden");
         const response = await fetch(`${API_BASE_URL}${API_AUCTION_LISTINGS}?_seller=true&_bids=true&sort=created&sortOrder=desc`, {
             method: "GET",
             headers: {
@@ -23,24 +32,21 @@ async function auctionListings() {
             const errorMessage = errorData.errors[0].message || "Failed to fetch";
             throw new Error(errorMessage);
         }
-
+        spinner.classList.add("hidden");
         const { data } = await response.json();
-        data.forEach((item, index) => {
-            console.log(`Item ${index}:`, item);
-            console.log(`Item ${index} media:`, item.media);
-        });
         data.forEach((item) => {
             const listingCard = document.createElement("div");
             listingCard.classList.add(
                 "bg-white",
                 "rounded-xl",
-                "w-64",
+                "max-w-cards-250",
                 "mt-16",
                 "flex",
                 "flex-col",
                 "justify-center",
                 "items-left",
             );
+
 
             // Add image
             const mediaUrl = item.media && item.media.length > 0 ? item.media[0].url : "/images/placeholder-image.png";
@@ -111,4 +117,3 @@ async function auctionListings() {
 }
 
 auctionListings();
-singleProfile();
