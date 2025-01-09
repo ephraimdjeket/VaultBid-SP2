@@ -1,4 +1,4 @@
-import { displayError } from "../ui/errorHandler.mjs";
+import { displayError } from "../utils/errorHandler.mjs";
 import { API_BASE_URL } from "../utils/apiConfig.mjs";
 
 // Register User Inputs
