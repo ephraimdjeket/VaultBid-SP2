@@ -1,7 +1,7 @@
 import { API_BASE_URL, API_AUCTION_LISTINGS } from "../utils/apiConfig.mjs";
 import { singleProfile, accessToken, apiKey } from "../ui/profileListings.mjs";
-import { displayError } from "../ui/errorHandler.mjs";
-import { userLoggedIn, isLoggedIn, isNotLoggedIn, bidSection, visitorMessage } from "../ui/userLoggedIn.mjs";
+import { displayError } from "../utils/errorHandler.mjs";
+import { userLoggedIn, isLoggedIn, isNotLoggedIn, bidSection, visitorMessage } from "../utils/userLoggedIn.mjs";
 
 const listingImage = document.getElementById("listing-image");
 const listingTitle = document.getElementById("title");
