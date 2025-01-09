@@ -1,5 +1,5 @@
 import { API_BASE_URL, API_AUTH, API_LOGIN } from "../utils/apiConfig.mjs";
-import { displayError } from "../ui/errorHandler.mjs";
+import { displayError } from "../utils/errorHandler.mjs";
 
 const loginEmailInput = document.getElementById("login-email");
 const loginPasswordInput = document.getElementById("login-password");
