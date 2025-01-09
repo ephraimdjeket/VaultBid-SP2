@@ -18,7 +18,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
     <link rel="manifest" href="/assets/site.webmanifest">
-    <script type="module" src="/js/ui/userLoggedIn.mjs"></script>
+    <script type="module" src="/js/utils/userLoggedIn.mjs"></script>
     <script src="/js/ui/hamburger.js" defer></script>
     <script src="/js/auth/logout.js" defer></script>
     <script type="module" src="/js/auction/listings.mjs"></script>
@@ -79,16 +79,17 @@
                 class="sm:hidden bg-slate-blue text-white font-roboto flex items-center justify-center w-32 h-8 cursor-pointer py-2 logout-mob">Logout</a>
         </div>
     </div>
-    <main class="flex flex-col items-center justify-center gap-1 flex-grow">
+    <main class="flex flex-col  gap-1 flex-grow">
         <div class=" text-center bg-red-400 border-4 border-red-500 mx-auto w-96 px-5 py-4 my-3 font-bold hidden"
             id="error-message">
         </div>
-        <form>
+        <form class="flex flex-row justify-end lg:pr-9 items-center max-lg:flex-col">
             <div class="flex flex-row">
                 <label class="sr-only" for="Search">Search</label>
-                <input class="rounded-l-lg w-11/12 h-9 pl-3" type="text" name="Search" id="search" placeholder="Search"
-                    required>
-                <button class="bg-slate-blue text-white rounded-r-lg cursor-pointer px-2 flex items-center gap-2">
+                <input class="rounded-l-lg w-52 h-9 pl-3 max-lg:w-40" type="text" name="Search" id="Search"
+                    placeholder="Search" required>
+                <button type="submit"
+                    class="bg-slate-blue text-white rounded-r-lg cursor-pointer px-2 flex items-center gap-2 lg:mr-8">
                     <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
@@ -96,6 +97,13 @@
                     </svg>
                 </button>
             </div>
+            <div class="max-lg flex flex-row justify-center max-lg:pt-10 gap-3">
+                <input id="newest" type="submit" class="bg-slate-blue text-white w-24 cursor-pointer rounded-2xl h-8"
+                    value="Newest">
+                <input id="oldest" type="submit" class="bg-slate-blue text-white w-24 cursor-pointer rounded-2xl h-8"
+                    value="Oldest">
+            </div>
+
         </form>
         <div class="status hidden my-12" role="status">
             <svg aria-hidden="true"
@@ -111,7 +119,8 @@
             <span class="sr-only">Loading...</span>
         </div>
         <!-- Listing card container-->
-        <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4" id="listing-container">
+        <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4 mx-auto items-center justify-center"
+            id="listing-container">
         </div>
 
 
