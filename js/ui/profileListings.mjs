@@ -1,5 +1,5 @@
 import { API_BASE_URL } from "../utils/apiConfig.mjs";
-import { displayError } from "./errorHandler.mjs";
+import { displayError } from "../utils/errorHandler.mjs";
 
 const creditDisplay = document.querySelector(".credits");
 const creditDisplayMobile = document.querySelector(".credits-mobile");
