@@ -1,5 +1,5 @@
 import { API_BASE_URL, API_AUCTION_PROFILE } from "../utils/apiConfig.mjs";
-import { displayErrorAvatar } from "./errorHandler.mjs";
+import { displayErrorAvatar } from "../utils/errorHandler.mjs";
 import { user, accessToken, apiKey } from "./profileListings.mjs";
 
 const avatarModalEl = document.getElementById("modal-avatar");
