@@ -21,7 +21,9 @@
     <script src="/js/ui/hamburger.js" defer></script>
     <script src="/js/auth/logout.js" defer></script>
     <script src="/js/auction/userProfile.mjs" type="module"></script>
+    <script type="module" src="/js/utils/userLoggedIn.mjs"></script>
     <script type="module" src="/js/ui/avatarModal.mjs"></script>
+    <script type="module" src="/js/ui/CRUDModal.mjs"></script>
     <title>VaultBid | Profile</title>
 </head>
 
@@ -79,7 +81,7 @@
                 class="sm:hidden bg-slate-blue text-white font-roboto flex items-center justify-center w-32 h-8 cursor-pointer py-2 logout-mob">Logout</a>
         </div>
     </div>
-    <main class="flex flex-col items-center justify-center gap-1 flex-grow">
+    <main class="flex flex-col items-center justify-center gap-1 flex-grow main">
         <!-- Update avatar modal-->
         <div class="fixed z-10 inset-0 hidden" id="modal-avatar">
             <div class="flex items-center justify-center min-h-screen bg-gray-500 bg-opacity-75 transition-all"
@@ -93,8 +95,9 @@
                             d="M6 18 17.94 6M18 18 6.06 6" />
                     </svg>
                     <form class="flex flex-col w-full h-full justify-center" action="#" id="update-avatar">
-                        <label class="text-white text-xl font-open-sans pb-3" for="image-url">Avatar Image Url</label>
                         <div class="flex flex-col gap-5">
+                            <label class="text-white text-xl font-open-sans pb-3" for="image-url">Avatar Image
+                                Url</label>
                             <input class="h-9 pl-3" type="text" id="image-url" name="image-url" required>
                             <input class="bg-slate-blue font-open-sans text-white h-9 cursor-pointer" type="submit"
                                 name="submit" id="submit">
@@ -112,9 +115,50 @@
             <h2 class="font-bold text-4xl font-roboto" id="username"></h2>
             <p class=" text-xl font-roboto" id="bio"></p>
             <p class="underline font-open-sans cursor-pointer" id="open-avatarmodal">Update avatar image</p>
-            <button class="bg-slate-blue rounded-lg w-48 h-9 flex justify-center items-center py-5 px-6 cursor-pointer">
+            <button class="bg-slate-blue rounded-lg w-48 h-9 flex justify-center items-center py-5 px-6 cursor-pointer"
+                id="open-crud">
                 <p class="font-bold font-roboto">+ Add new listing</p>
             </button>
+        </div>
+        <!-- CRUD modal-->
+        <div class="fixed z-10 inset-0 hidden" id="modal-crud">
+            <div class="flex items-center justify-center min-h-screen bg-gray-500 bg-opacity-75 transition-all"
+                id="modal-overlay-crud">
+                <div
+                    class="flex flex-col items-center bg-charcoal w-96 lg:w-450 relative rounded-lg mx-7 px-8 py-1 lg:py-4">
+                    <svg id="exit-crudmodal"
+                        class="absolute top-5 right-6 w-8 h-8 text-gray-800 dark:text-white cursor-pointer"
+                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                        viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18 17.94 6M18 18 6.06 6" />
+                    </svg>
+                    <h1 class="text-center text-white font-bold font-roboto text-2xl pt-10">Add New Listing</h1>
+                    <form class="flex flex-col w-full justify-center" action="#" id="update-crud">
+                        <div class="flex flex-col my-4">
+                            <label class="text-white font-open-sans" for="title">Title</label>
+                            <input class="h-9 pl-3" type="text" id="title" name="title" required>
+                        </div>
+                        <div class="flex flex-col my-4">
+                            <label class="text-white font-open-sans" for="description">Description</label>
+                            <textarea class="h-36 pl-3 pt-1" id="description" name="description"></textarea>
+                        </div>
+                        <div class="flex flex-col my-4">
+                            <label class="text-white font-open-sans" for="image-list-url">Image URL </label>
+                            <input class="h-9 pl-3" type="text" id="image-list-url" name="image-list-url">
+                        </div>
+                        <div class="flex flex-col my-4">
+                            <label class="text-white font-open-sans" for="image-list-url">End Date</label>
+                            <input class="h-9 pl-3" type="date" id="image-list-url" name="image-list-url" required>
+                        </div>
+                        <input class="bg-slate-blue font-open-sans text-white h-9 cursor-pointer my-3" type="submit"
+                            name="submit" id="submit">
+                        <div class=" text-center bg-red-400 border-4 border-red-500 mx-auto  px-5 py-2 my-3 font-bold w-full hidden"
+                            id="error-message-crud">
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
         <div class=" text-center bg-red-400 border-4 border-red-500 mx-auto w-96 px-5 py-4 my-3 font-bold  hidden"
             id="error-message">
@@ -122,32 +166,10 @@
         <!--My Listings-->
         <h2 class="text-white font-open-sans font-light text-3xl max-sm:text-center mx-9 pt-20">My Listings</h2>
         <div class="flex flex-wrap gap-2 max-sm:flex-col items-center mx-9" id="listing-container">
-            <!-- Listing card-->
-            <!-- <div class="bg-white rounded-xl w-64 mt-16 flex flex-col justify-center items-left ">
-                <img class="rounded-t-xl block w-full" src="/images/placeholder-image.png" alt="placeholder image">
-                <div class="flex flex-col gap-2 pl-7 py-9">
-                    <h2 class="list-title font-bold text-xl font-roboto">Title of listing</h2>
-                    <p class="font-open-sans">Ends: <span class="list-date font-bold">01/01/2024 </span></p>
-                    <p class="font-open-sans">Current bid: <span class="list-price font-bold">$8</span></p>
-                    <a href="/listing-details"
-                        class="list-button bg-slate-blue font-bold font-open-sans w-40 h-9 mt-5 text-white flex items-center justify-center">View</a>
-                </div>
-            </div> -->
         </div>
         <!--My Wins-->
         <h2 class="text-white font-open-sans font-light text-3xl max-sm:text-center mx-9 pt-20">My Wins</h2>
         <div class="flex flex-wrap gap-2 max-sm:flex-col items-center mx-9">
-            <!-- Listing card-->
-            <!-- <div class="bg-white rounded-xl w-64 mt-16 flex flex-col justify-center items-left ">
-                <img class="rounded-t-xl block w-full" src="/images/placeholder-image.png" alt="placeholder image">
-                <div class="flex flex-col gap-2 pl-7 py-9">
-                    <h2 class="list-title font-bold text-xl font-roboto">Title of listing</h2>
-                    <p class="font-open-sans">Ends: <span class="list-date font-bold">01/01/2024 </span></p>
-                    <p class="font-open-sans">Current bid: <span class="list-price font-bold">$8</span></p>
-                    <a href="/listing-details"
-                        class="list-button bg-slate-blue font-bold font-open-sans w-40 h-9 mt-5 text-white flex items-center justify-center">View</a>
-                </div>
-            </div> -->
         </div>
     </main>
     <footer class="flex justify-center gap-6 py-10">
