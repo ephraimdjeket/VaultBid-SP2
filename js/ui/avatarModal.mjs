@@ -8,7 +8,6 @@ const openAvatarModal = document.getElementById("open-avatarmodal");
 const avatarInputURL = document.getElementById("image-url");
 const modalOverlay = document.getElementById("modal-overlay");
 const updateAvatarEl = document.getElementById("update-avatar");
-const imageSuccessfulContainer = document.getElementById("image-successful");
 
 // Closes the modal once the user clicks the close icon.
 exitAvatarModal.addEventListener("click", () => {
