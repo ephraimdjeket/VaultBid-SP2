@@ -22,8 +22,9 @@ newestFilterBtn.addEventListener("click", (e) => {
 
             if (!response.ok) {
                 spinner.classList.add("hidden");
-                console.error("Failed to fetch data");
-                return;
+                const errorData = await response.json();
+                const errorMessage = errorData.errors[0].message || "Failed to fetch";
+                displayError(errorMessage);
             }
             spinner.classList.add("hidden");
             const { data } = await response.json();
@@ -61,13 +62,18 @@ oldestFilterBtn.addEventListener("click", (e) => {
 
             if (!response.ok) {
                 spinner.classList.add("hidden");
-                console.error("Failed to fetch data");
-                return;
+                const errorData = await response.json();
+                const errorMessage = errorData.errors[0].message || "Failed to fetch";
+                displayError(errorMessage);
             }
             spinner.classList.add("hidden");
             const { data } = await response.json();
-
-            const sortedData = data.sort((a, b) => {
+            const currentDate = new Date();
+            const activeAuctions = data.filter(item => {
+                const endDate = new Date(item.endsAt);
+                return endDate > currentDate;
+            })
+            const sortedData = activeAuctions.sort((a, b) => {
                 const dateA = new Date(a.created);
                 const dateB = new Date(b.created);
                 return dateA - dateB;
@@ -114,7 +120,7 @@ async function auctionListings() {
             spinner.classList.add("hidden");
             const errorData = await response.json();
             const errorMessage = errorData.errors[0].message || "Failed to fetch";
-            throw new Error(errorMessage);
+            displayError(errorMessage);
         }
         spinner.classList.add("hidden");
         const { data } = await response.json();
