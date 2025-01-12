@@ -87,7 +87,7 @@ async function listingDetails() {
         });
 
         if (!response.ok) {
-            throw new Error(`Error: ${response.status} ${response.statusText}`);
+            throw new Error(Error);
         }
         spinner.classList.add("hidden");
         const { data } = await response.json();
@@ -105,6 +105,7 @@ async function listingDetails() {
     } catch (error) {
         const errorMessage = `${error.message}`;
         displayError(errorMessage);
+        return;
     }
 }
 
@@ -121,13 +122,7 @@ function renderListingDetails(listing) {
         ? listing.title.substring(0, 40) + "..."
         : listing.title || "Untitled Listing";
     listingDescription.style.maxWidth = "24rem";
-    if (!listing.description.includes(" ")) {
-        listingDescription.innerText = listing.description.slice(0, 12) + "...";
-    } else {
-        listingDescription.innerText =
-            listing.description.charAt(0).toUpperCase() +
-            listing.description.slice(1);
-    };
+    listingDescription.innerText = listing.description && listing.description.length > 100 ? listing.description.substring(0, 100) + "..." : listing.description || "No description added.";
     listingSeller.innerText = `Seller: ${listing.seller.name} `;
     const originalDate = listing.endsAt;
     const date = new Date(originalDate);
