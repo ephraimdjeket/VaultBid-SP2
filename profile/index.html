@@ -18,12 +18,12 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
     <link rel="manifest" href="/assets/site.webmanifest">
+    <script type="module" src="/js/utils/userLoggedIn.mjs"></script>
     <script src="/js/ui/hamburger.js" defer></script>
     <script src="/js/auth/logout.js" defer></script>
     <script src="/js/auction/userProfile.mjs" type="module"></script>
-    <script type="module" src="/js/utils/userLoggedIn.mjs"></script>
     <script type="module" src="/js/ui/avatarModal.mjs"></script>
-    <script type="module" src="/js/ui/CRUDModal.mjs"></script>
+    <script type="module" src="/js/ui/createModal.mjs"></script>
     <title>VaultBid | Profile</title>
 </head>
 
@@ -65,7 +65,7 @@
             <a href="/listing/" class="max-sm:hidden text-white font-roboto text-lg">Listings</a>
             <a href="/profile/" class="max-sm:hidden text-white font-roboto text-lg profile-desktop">Profile</a>
             <a href="/index.html"
-                class="max-sm:hidden bg-slate-blue text-white font-roboto flex items-center justify-center w-32 h-8 cursor-pointer logout">Logout</a>
+                class="max-sm:hidden bg-slate-blue text-white font-roboto flex items-center justify-center w-32 h-8 cursor-pointer rounded-2xl logout">Logout</a>
         </div>
     </header>
     <div class="bg-charcoal w-full sm:hidden border-t border-white" id="menu">
@@ -78,7 +78,7 @@
             <a href=" /listing/" class="sm:hidden text-white font-roboto text-lg py-2">Listings</a>
             <a href="/profile/" class="sm:hidden text-white font-roboto text-lg py-2 profile-mob">Profile</a>
             <a href="/index.html"
-                class="sm:hidden bg-slate-blue text-white font-roboto flex items-center justify-center w-32 h-8 cursor-pointer py-2 logout-mob">Logout</a>
+                class="sm:hidden bg-slate-blue text-white font-roboto flex items-center justify-center w-32 h-8 cursor-pointer py-2 rounded-2xl logout-mob">Logout</a>
         </div>
     </div>
     <main class="flex flex-col items-center justify-center gap-1 flex-grow main">
@@ -116,17 +116,17 @@
             <p class=" text-xl font-roboto" id="bio"></p>
             <p class="underline font-open-sans cursor-pointer" id="open-avatarmodal">Update avatar image</p>
             <button class="bg-slate-blue rounded-lg w-48 h-9 flex justify-center items-center py-5 px-6 cursor-pointer"
-                id="open-crud">
+                id="open-create">
                 <p class="font-bold font-roboto">+ Add new listing</p>
             </button>
         </div>
-        <!-- CRUD modal-->
-        <div class="fixed z-10 inset-0 hidden" id="modal-crud">
+        <!-- Create modal-->
+        <div class="fixed z-10 inset-0 hidden" id="modal-create">
             <div class="flex items-center justify-center min-h-screen bg-gray-500 bg-opacity-75 transition-all"
-                id="modal-overlay-crud">
+                id="modal-overlay-create">
                 <div
                     class="flex flex-col items-center bg-charcoal w-96 lg:w-450 relative rounded-lg mx-7 px-8 py-1 lg:py-4">
-                    <svg id="exit-crudmodal"
+                    <svg id="exit-createmodal"
                         class="absolute top-5 right-6 w-8 h-8 text-gray-800 dark:text-white cursor-pointer"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                         viewBox="0 0 24 24">
@@ -134,7 +134,7 @@
                             d="M6 18 17.94 6M18 18 6.06 6" />
                     </svg>
                     <h1 class="text-center text-white font-bold font-roboto text-2xl pt-10">Add New Listing</h1>
-                    <form class="flex flex-col w-full justify-center" action="#" id="update-crud">
+                    <form class="flex flex-col w-full justify-center" action="#" id="update-create">
                         <div class="flex flex-col my-4">
                             <label class="text-white font-open-sans" for="title">Title</label>
                             <input class="h-9 pl-3" type="text" id="title" name="title" required>
@@ -148,14 +148,14 @@
                             <input class="h-9 pl-3" type="text" id="image-list-url" name="image-list-url">
                         </div>
                         <div class="flex flex-col my-4">
-                            <label class="text-white font-open-sans" for="image-list-url">End Date</label>
-                            <input class="h-9 pl-3" type="date" id="image-list-url" name="image-list-url" required>
+                            <label class="text-white font-open-sans" for="end-date">End Date</label>
+                            <input class="h-9 pl-3" type="date" id="end-date" name="end-date" required>
                         </div>
                         <input class="bg-slate-blue font-open-sans text-white h-9 cursor-pointer my-3" type="submit"
                             name="submit" id="submit">
+
                         <div class=" text-center bg-red-400 border-4 border-red-500 mx-auto  px-5 py-2 my-3 font-bold w-full hidden"
-                            id="error-message-crud">
-                        </div>
+                            id="error-message-create"></div>
                     </form>
                 </div>
             </div>
