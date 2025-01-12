@@ -1,6 +1,6 @@
 export function renderListingCard(dataType, listingCardContainer) {
     dataType.forEach((item) => {
-        const listingCard = document.createElement("div");
+        const listingCard = document.createElement("a");
         listingCard.classList.add(
             "bg-white",
             "rounded-xl",
@@ -9,7 +9,7 @@ export function renderListingCard(dataType, listingCardContainer) {
             "flex",
             "flex-col",
             "justify-center",
-            "items-left"
+            "items-left", "cursor-pointer"
         );
 
         // Add image
@@ -52,7 +52,7 @@ export function renderListingCard(dataType, listingCardContainer) {
 
         // Add view button
         const listingButton = document.createElement("a");
-        listingButton.href = `/listing-details/?id=${item.id}`;
+        listingCard.href = `/listing-details/?id=${item.id}`;
         listingButton.classList.add(
             "list-button",
             "bg-slate-blue",
@@ -64,7 +64,8 @@ export function renderListingCard(dataType, listingCardContainer) {
             "text-white",
             "flex",
             "items-center",
-            "justify-center"
+            "justify-center",
+            "rounded-2xl",
         );
         listingButton.innerText = "View";
         listingContainer.appendChild(listingButton);
