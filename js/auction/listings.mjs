@@ -1,4 +1,4 @@
-import { API_BASE_URL, API_AUCTION_LISTINGS } from "../utils/apiConfig.mjs";
+import { API_BASE_URL, API_AUCTION_LISTINGS, apiFetch } from "../utils/apiConfig.mjs";
 import { singleProfile } from "../ui/profileListings.mjs";
 import { displayError } from "../utils/errorHandler.mjs";
 import { userLoggedIn, isLoggedIn, isNotLoggedIn } from "../utils/userLoggedIn.mjs";
@@ -7,13 +7,40 @@ const spinner = document.querySelector(".status");
 const listingCardContainer = document.getElementById("listing-container");
 const newestFilterBtn = document.getElementById("newest");
 const oldestFilterBtn = document.getElementById("oldest");
+const searchForm = document.getElementById("search-form");
+
+searchForm.addEventListener("input", async (e) => {
+    const inputValue = e.target.value.toLowerCase();
+    try {
+        const response = await fetch(apiFetch("desc"), {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        if (!response.ok) {
+            const errorData = await response.json();
+            const errorMessage = errorData.errors[0].message || "Failed to fetch";
+            displayError(errorMessage);
+            return;
+        }
+        const { data } = await response.json();
+        const filteredData = data.filter((item) => item.title.toLowerCase().includes(inputValue));
+        listingCardContainer.innerHTML = "";
+        renderListingCard(filteredData, listingCardContainer);
+    } catch (error) {
+        displayError(error.message);
+        return;
+    }
+});
+
 
 newestFilterBtn.addEventListener("click", (e) => {
     e.preventDefault();
     spinner.classList.remove("hidden");
     async function fetchNewest() {
         try {
-            const response = await fetch(`${API_BASE_URL}${API_AUCTION_LISTINGS}?_seller=true&_bids=true&sort=created&sortOrder=desc`, {
+            const response = await fetch(apiFetch("desc"), {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -25,6 +52,7 @@ newestFilterBtn.addEventListener("click", (e) => {
                 const errorData = await response.json();
                 const errorMessage = errorData.errors[0].message || "Failed to fetch";
                 displayError(errorMessage);
+                return;
             }
             spinner.classList.add("hidden");
             const { data } = await response.json();
@@ -40,6 +68,7 @@ newestFilterBtn.addEventListener("click", (e) => {
         } catch (error) {
             spinner.classList.add("hidden");
             displayError(error.message);
+            return;
         }
     }
 
@@ -53,27 +82,23 @@ oldestFilterBtn.addEventListener("click", (e) => {
     spinner.classList.remove("hidden");
     async function fetchOldest() {
         try {
-            const response = await fetch(`${API_BASE_URL}${API_AUCTION_LISTINGS}?_seller=true&_bids=true&sort=created&sortOrder=asc`, {
+            const response = await fetch(apiFetch("desc"), {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
                 },
             });
-
             if (!response.ok) {
                 spinner.classList.add("hidden");
                 const errorData = await response.json();
                 const errorMessage = errorData.errors[0].message || "Failed to fetch";
                 displayError(errorMessage);
+                return;
             }
             spinner.classList.add("hidden");
             const { data } = await response.json();
-            const currentDate = new Date();
-            const activeAuctions = data.filter(item => {
-                const endDate = new Date(item.endsAt);
-                return endDate > currentDate;
-            })
-            const sortedData = activeAuctions.sort((a, b) => {
+            const reversedData = data.reverse();
+            const sortedData = reversedData.sort((a, b) => {
                 const dateA = new Date(a.created);
                 const dateB = new Date(b.created);
                 return dateA - dateB;
@@ -88,6 +113,7 @@ oldestFilterBtn.addEventListener("click", (e) => {
         } catch (error) {
             spinner.classList.add("hidden");
             displayError(error.message);
+            return;
         }
     }
 
@@ -109,7 +135,7 @@ async function auctionListings() {
 
     try {
         spinner.classList.remove("hidden");
-        const response = await fetch(`${API_BASE_URL}${API_AUCTION_LISTINGS}?_seller=true&_bids=true&sort=created&sortOrder=desc`, {
+        const response = await fetch(apiFetch("desc"), {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -121,6 +147,7 @@ async function auctionListings() {
             const errorData = await response.json();
             const errorMessage = errorData.errors[0].message || "Failed to fetch";
             displayError(errorMessage);
+            return;
         }
         spinner.classList.add("hidden");
         const { data } = await response.json();
@@ -128,6 +155,7 @@ async function auctionListings() {
     } catch (error) {
         spinner.classList.add("hidden");
         displayError(error.message);
+        return;
     }
 }
 
