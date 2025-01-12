@@ -73,7 +73,7 @@ export async function fetchWins() {
 }
 
 export function listItem(item) {
-    const listingCard = document.createElement("div");
+    const listingCard = document.createElement("a");
     listingCard.classList.add(
         "bg-white",
         "rounded-xl",
@@ -126,7 +126,7 @@ export function listItem(item) {
 
     // Add view button
     const listingButton = document.createElement("a");
-    listingButton.href = `/listing-details/?id=${item.id}`;
+    listingCard.href = `/listing-details/?id=${item.id}`;
     listingButton.classList.add(
         "list-button",
         "bg-slate-blue",
@@ -138,7 +138,8 @@ export function listItem(item) {
         "text-white",
         "flex",
         "items-center",
-        "justify-center"
+        "justify-center",
+        "rounded-2xl",
     );
     listingButton.innerText = "View";
     listingContainer.appendChild(listingButton);
