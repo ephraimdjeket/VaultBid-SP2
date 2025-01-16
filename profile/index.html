@@ -87,7 +87,7 @@
             <div class="flex items-center justify-center min-h-screen bg-gray-500 bg-opacity-75 transition-all"
                 id="modal-overlay">
                 <div class="flex flex-col items-center bg-charcoal w-96 h-80 md:h-72 relative rounded-lg mx-7 px-8">
-                    <svg id="exit-avatarmodal"
+                    <svg id="exit-avatar-modal"
                         class="absolute top-5 right-6 w-8 h-8 text-gray-800 dark:text-white cursor-pointer"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                         viewBox="0 0 24 24">
@@ -114,7 +114,7 @@
             <img class="rounded-full w-64 h-64 object-cover" alt="Profile photo" id="profileImg">
             <h2 class="font-bold text-4xl font-roboto" id="username"></h2>
             <p class=" text-xl font-roboto" id="bio"></p>
-            <p class="underline font-open-sans cursor-pointer" id="open-avatarmodal">Update avatar image</p>
+            <p class="underline font-open-sans cursor-pointer" id="open-avatar-modal">Update avatar image</p>
             <button class="bg-slate-blue rounded-lg w-48 h-9 flex justify-center items-center py-5 px-6 cursor-pointer"
                 id="open-create">
                 <p class="font-bold font-roboto">+ Add new listing</p>
@@ -126,7 +126,7 @@
                 id="modal-overlay-create">
                 <div
                     class="flex flex-col items-center bg-charcoal w-96 lg:w-450 relative rounded-lg mx-7 px-8 py-1 lg:py-4">
-                    <svg id="exit-createmodal"
+                    <svg id="exit-create-modal"
                         class="absolute top-5 right-6 w-8 h-8 text-gray-800 dark:text-white cursor-pointer"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                         viewBox="0 0 24 24">
@@ -165,7 +165,8 @@
         </div>
         <!--My Listings-->
         <h2 class="text-white font-open-sans font-light text-3xl max-sm:text-center mx-9 pt-20">My Listings</h2>
-        <div class="flex flex-wrap gap-2 max-sm:flex-col items-center mx-9" id="listing-container">
+        <div class="flex flex-wrap gap-6 max-sm:flex-col items-center mx-9 max-lg:justify-center"
+            id="listing-container">
         </div>
         <!--My Wins-->
         <h2 class="text-white font-open-sans font-light text-3xl max-sm:text-center mx-9 pt-20">My Wins</h2>
