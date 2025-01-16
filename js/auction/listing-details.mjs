@@ -1,7 +1,7 @@
-import { API_BASE_URL, API_AUCTION_LISTINGS } from "../utils/apiConfig.mjs";
+import { API_AUCTION_LISTINGS } from "../utils/apiConfig.mjs";
 import { singleProfile, accessToken, apiKey } from "../ui/profileListings.mjs";
 import { displayError } from "../utils/errorHandler.mjs";
-import { userLoggedIn, isLoggedIn, isNotLoggedIn, bidSection, visitorMessage } from "../utils/userLoggedIn.mjs";
+import { userLoginCheck } from "../utils/userLoggedIn.mjs";
 
 const listingImage = document.getElementById("listing-image");
 const listingTitle = document.getElementById("title");
@@ -13,19 +13,10 @@ const bidHistoryContainer = document.getElementById("bid-history");
 const allAmounts = [];
 const bidAmount = document.getElementById("bid-amount");
 const biddingFormEl = document.getElementById("bid-form");
-const bidSuccessfullMessage = document.getElementById("bid-successful");
+const bidSuccessfulMessage = document.getElementById("bid-successful");
 const spinner = document.querySelector(".status");
 
-if (userLoggedIn) {
-    isLoggedIn();
-    singleProfile();
-    bidSection.classList.remove("hidden");
-} else {
-    isNotLoggedIn();
-    bidSection.classList.add("hidden");
-    visitorMessage.classList.remove("hidden");
-    visitorMessage.innerText = "Login to bid 😊";
-}
+userLoginCheck(singleProfile);
 
 async function bidOnItem(id) {
     try {
@@ -35,7 +26,7 @@ async function bidOnItem(id) {
             return;
         }
 
-        const response = await fetch(`${API_BASE_URL}${API_AUCTION_LISTINGS}/${id}/bids`, {
+        const response = await fetch(`${API_AUCTION_LISTINGS}/${id}/bids`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -55,16 +46,16 @@ async function bidOnItem(id) {
         }
 
         const result = await response.json();
-        bidSuccessfullMessage.classList.remove("hidden");
-        bidSuccessfullMessage.innerText = "You've successfully bid on this item"
+        bidSuccessfulMessage.classList.remove("hidden");
+        bidSuccessfulMessage.innerText = "You've successfully bid on this item"
         setTimeout(() => {
-            bidSuccessfullMessage.classList.add("hidden");
+            bidSuccessfulMessage.classList.add("hidden");
         }, 3000);
 
         listingDetails();
         singleProfile();
     } catch (error) {
-        bidSuccessfullMessage.classList.add("hidden");
+        bidSuccessfulMessage.classList.add("hidden");
         const errorMessage = `${error.message}`;
         displayError(errorMessage);
     }
@@ -79,7 +70,7 @@ async function listingDetails() {
         if (!id) {
             throw new Error("No ID found in the URL.");
         }
-        const response = await fetch(`${API_BASE_URL}${API_AUCTION_LISTINGS}?_seller=true&_bids=true&sort=created&sortOrder=desc`, {
+        const response = await fetch(`${API_AUCTION_LISTINGS}?_seller=true&_bids=true&sort=created&sortOrder=desc`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -113,7 +104,7 @@ async function listingDetails() {
 
 function renderListingDetails(listing) {
     if (!listing.media || listing.media.length === 0 || !listing.media[0]?.url) {
-        listingImage.src = "/images/placeholder-image.png";
+        listingImage.src = "/images/placeholder-image.jpg";
     } else {
         listingImage.src = listing.media[0].url;
     }
