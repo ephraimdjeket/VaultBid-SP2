@@ -594,10 +594,6 @@ video {
   z-index: 10 !important;
 }
 
-.z-20 {
-  z-index: 20 !important;
-}
-
 .mx-7 {
   margin-left: 1.75rem !important;
   margin-right: 1.75rem !important;
@@ -626,6 +622,11 @@ video {
 .my-4 {
   margin-top: 1rem !important;
   margin-bottom: 1rem !important;
+}
+
+.my-7 {
+  margin-top: 1.75rem !important;
+  margin-bottom: 1.75rem !important;
 }
 
 .ml-20 {
@@ -872,6 +873,10 @@ video {
 
 .gap-6 {
   gap: 1.5rem !important;
+}
+
+.gap-9 {
+  gap: 2.25rem !important;
 }
 
 .rounded-2xl {
@@ -1198,6 +1203,10 @@ video {
 
   .max-lg\:items-center {
     align-items: center !important;
+  }
+
+  .max-lg\:justify-center {
+    justify-content: center !important;
   }
 
   .max-lg\:pt-10 {
