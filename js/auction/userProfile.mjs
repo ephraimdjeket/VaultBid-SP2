@@ -1,14 +1,7 @@
-import { singleProfile, fetchListings, fetchWins } from "../ui/profileListings.mjs";
-import { userLoggedIn, isLoggedIn, isNotLoggedIn } from "../utils/userLoggedIn.mjs";
+import { userLoginCheck } from "../utils/userLoggedIn.mjs";
 
-if (userLoggedIn) {
-    isLoggedIn();
-    fetchListings();
-    fetchWins();
-    singleProfile();
-} else {
-    isNotLoggedIn();
-}
+
+userLoginCheck();
 
 const userName = localStorage.getItem("user");
 const userProfileName = document.getElementById("username");
@@ -18,4 +11,4 @@ const user = JSON.parse(userName);
 
 userProfileName.innerText = user.name;
 userProfileBio.innerText = user.bio || "A bio hasn't been added.";
-userProfilePicture.src = user.avatar.url || "/images/placeholder-image.png";
+userProfilePicture.src = user.avatar.url || "/images/placeholder-image.jpg";
