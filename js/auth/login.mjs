@@ -1,4 +1,4 @@
-import { API_BASE_URL, API_AUTH, API_LOGIN } from "../utils/apiConfig.mjs";
+import { API_LOGIN } from "../utils/apiConfig.mjs";
 import { displayError } from "../utils/errorHandler.mjs";
 
 const loginEmailInput = document.getElementById("login-email");
@@ -7,7 +7,7 @@ const loginFormEl = document.getElementById("login-form");
 
 async function login() {
     try {
-        const response = await fetch(`${API_BASE_URL}${API_AUTH}${API_LOGIN}`, {
+        const response = await fetch(`${API_LOGIN}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
