@@ -13,7 +13,7 @@ export function renderListingCard(dataType, listingCardContainer) {
         );
 
         // Add image
-        const mediaUrl = item.media && item.media.length > 0 ? item.media[0].url : "/images/placeholder-image.png";
+        const mediaUrl = item.media && item.media.length > 0 ? item.media[0].url : "/images/placeholder-image.jpg";
         const mediaAlt = item.media && item.media.length > 0 ? item.media[0].alt : "Placeholder Image";
         const listingCardImg = document.createElement("img");
         listingCardImg.style.height = "12rem";
