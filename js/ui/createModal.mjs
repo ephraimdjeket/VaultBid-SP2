@@ -1,12 +1,12 @@
-import { API_BASE_URL, API_AUCTION_LISTINGS } from "../utils/apiConfig.mjs";
+import { API_AUCTION_LISTINGS } from "../utils/apiConfig.mjs";
 import { accessToken, apiKey } from "./profileListings.mjs";
 import { displayErrorCreate } from "../utils/errorHandler.mjs";
 
 const createEl = document.getElementById("modal-create");
-const exitCreate = document.getElementById("exit-createmodal");
+const exitCreate = document.getElementById("exit-create-modal");
 const openCreate = document.getElementById("open-create");
 const createOverlay = document.getElementById("modal-overlay-create");
-const updatecreateEl = document.getElementById("update-create");
+const updateCreateEl = document.getElementById("update-create");
 const createTitle = document.getElementById("title");
 const createDescription = document.getElementById("description");
 const createImageUrl = document.getElementById("image-list-url");
@@ -34,7 +34,7 @@ createEl.addEventListener("click", (e) => {
 
 async function createListing() {
     try {
-        const response = await fetch(`${API_BASE_URL}${API_AUCTION_LISTINGS}`, {
+        const response = await fetch(`${API_AUCTION_LISTINGS}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -62,7 +62,7 @@ async function createListing() {
         return;
     }
 }
-updatecreateEl.addEventListener("submit", (e) => {
+updateCreateEl.addEventListener("submit", (e) => {
     e.preventDefault();
     createListing();
 

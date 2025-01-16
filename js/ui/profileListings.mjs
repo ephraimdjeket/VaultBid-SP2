@@ -1,17 +1,19 @@
-import { API_BASE_URL } from "../utils/apiConfig.mjs";
+import { API_AUCTION_PROFILE } from "../utils/apiConfig.mjs";
 import { displayError } from "../utils/errorHandler.mjs";
 
 const creditDisplay = document.querySelector(".credits");
 const creditDisplayMobile = document.querySelector(".credits-mobile");
-export const accessToken = localStorage.getItem("accessToken");
-export const apiKey = "b5f7559e-bbe6-4f1d-8d32-2b5618d9a720";
 const listingCardContainer = document.getElementById("listing-container");
 const userName = localStorage.getItem("user");
+
+export const accessToken = localStorage.getItem("accessToken");
+export const apiKey = "b5f7559e-bbe6-4f1d-8d32-2b5618d9a720";
 export const user = JSON.parse(userName);
+
 
 export async function singleProfile() {
     try {
-        const response = await fetch(`${API_BASE_URL}/auction/profiles/${user.name}`, authHeaders);
+        const response = await fetch(`${API_AUCTION_PROFILE}/${user.name}`, authHeaders);
         if (!response.ok) {
             const errorData = await response.json();
             const errorMessage = errorData.errors[0].message || "Failed to fetch";
@@ -40,7 +42,7 @@ export const authHeaders = {
 
 export async function fetchListings() {
     try {
-        const response = await fetch(`${API_BASE_URL}/auction/profiles/${user.name}/listings`, authHeaders);
+        const response = await fetch(`${API_AUCTION_PROFILE}/${user.name}/listings`, authHeaders);
         if (!response.ok) {
             const errorData = await response.json();
             const errorMessage = errorData.errors[0].message || "Failed to fetch";
@@ -59,7 +61,7 @@ export async function fetchListings() {
 
 export async function fetchWins() {
     try {
-        const response = await fetch(`${API_BASE_URL}/auction/profiles/${user.name}/wins`, authHeaders);
+        const response = await fetch(`${API_AUCTION_PROFILE}/${user.name}/wins`, authHeaders);
         if (!response.ok) throw new Error("Failed to fetch listings");
         const { data } = await response.json();
         data.forEach((item) => {

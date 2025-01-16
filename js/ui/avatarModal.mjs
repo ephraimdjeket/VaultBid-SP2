@@ -1,10 +1,10 @@
-import { API_BASE_URL, API_AUCTION_PROFILE } from "../utils/apiConfig.mjs";
+import { API_AUCTION_PROFILE } from "../utils/apiConfig.mjs";
 import { displayErrorAvatar } from "../utils/errorHandler.mjs";
 import { user, accessToken, apiKey } from "./profileListings.mjs";
 
 const avatarModalEl = document.getElementById("modal-avatar");
-const exitAvatarModal = document.getElementById("exit-avatarmodal");
-const openAvatarModal = document.getElementById("open-avatarmodal");
+const exitAvatarModal = document.getElementById("exit-avatar-modal");
+const openAvatarModal = document.getElementById("open-avatar-modal");
 const avatarInputURL = document.getElementById("image-url");
 const modalOverlay = document.getElementById("modal-overlay");
 const updateAvatarEl = document.getElementById("update-avatar");
@@ -32,7 +32,7 @@ avatarModalEl.addEventListener("click", (e) => {
 // PUT HTTP request to update avatar image URL
 async function updateAvatarURL() {
     try {
-        const response = await fetch(`${API_BASE_URL}${API_AUCTION_PROFILE}${user.name}`, {
+        const response = await fetch(`${API_AUCTION_PROFILE}/${user.name}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
