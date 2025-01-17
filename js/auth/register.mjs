@@ -11,49 +11,49 @@ const registerSuccessfulMessage = document.getElementById("register-successful")
 
 
 async function registerFetch() {
-    const bodyData = {
-        name: registerNameInput.value,
-        email: registerEmailInput.value,
-        password: registerPasswordInput.value,
-    };
+  const bodyData = {
+    name: registerNameInput.value,
+    email: registerEmailInput.value,
+    password: registerPasswordInput.value,
+  };
 
 
-    if (registerAvatarUrl.value !== "") {
-        bodyData.avatar = registerAvatarUrl.value;
+  if (registerAvatarUrl.value !== "") {
+    bodyData.avatar = registerAvatarUrl.value;
+  }
+
+  try {
+    const response = await fetch(`${API_REGISTER}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(bodyData),
+    });
+
+    const json = await response.json();
+
+    if (!response.ok) {
+      const errorMessage = json.errors[0].message || "Failed to register";
+      displayError(errorMessage);
+      return;
     }
 
-    try {
-        const response = await fetch(`${API_REGISTER}`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(bodyData),
-        });
+    registerSuccessfulMessage.classList.remove("hidden");
+    registerSuccessfulMessage.innerText = "Registration successful!";
+    setTimeout(() => {
+      registerSuccessfulMessage.classList.add("hidden");
+    }, 3000);
 
-        const json = await response.json();
-
-        if (!response.ok) {
-            const errorMessage = json.errors[0].message || "Failed to register";
-            displayError(errorMessage);
-            return;
-        }
-
-        registerSuccessfulMessage.classList.remove("hidden");
-        registerSuccessfulMessage.innerText = "Registration successful!";
-        setTimeout(() => {
-            registerSuccessfulMessage.classList.add("hidden");
-        }, 3000);
-
-    } catch (error) {
-        registerSuccessfulMessage.classList.add("hidden");
-        const errorMessage = `An error occurred: ${error.message}`;
-        displayError(errorMessage);
-    }
+  } catch (error) {
+    registerSuccessfulMessage.classList.add("hidden");
+    const errorMessage = `An error occurred: ${error.message}`;
+    displayError(errorMessage);
+  }
 }
 
 
 registerFormEl.addEventListener("submit", (e) => {
-    e.preventDefault();
-    registerFetch();
+  e.preventDefault();
+  registerFetch();
 });

@@ -13,5 +13,5 @@ export const getAuctionListingBidsUrl = (id) => `${API_AUCTION_LISTINGS}/${id}/b
 export const getAuctionProfileUrl = (profileId) => `${API_AUCTION_PROFILE}/${profileId}`;
 
 export function apiFetch(sortOrder) {
-    return `${API_AUCTION_LISTINGS}?_seller=true&_bids=true&sort=created&sortOrder=${sortOrder}&limit=100`
+  return `${API_AUCTION_LISTINGS}?_seller=true&_bids=true&sort=created&sortOrder=${sortOrder}&limit=100`
 };
