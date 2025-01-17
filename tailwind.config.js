@@ -7,7 +7,7 @@ module.exports = {
     "mt-5", "bg-white",
     "rounded-xl",
     "max-w-cards-250",
-    "mt-16", "rounded-t-xl", "block", "w-full", "object-cover"
+    "mt-16", "rounded-t-xl", "block", "w-full", "object-cover", "w-1/3"
   ],
   important: true,
   theme: {
