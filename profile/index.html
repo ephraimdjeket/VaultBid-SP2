@@ -2,188 +2,182 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-        rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
-        rel="stylesheet">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
-    <link rel="manifest" href="/assets/site.webmanifest">
-    <script type="module" src="/js/utils/userLoggedIn.mjs"></script>
-    <script src="/js/ui/hamburger.js" defer></script>
-    <script src="/js/auth/logout.js" defer></script>
-    <script src="/js/auction/userProfile.mjs" type="module"></script>
-    <script type="module" src="/js/ui/avatarModal.mjs"></script>
-    <script type="module" src="/js/ui/createModal.mjs"></script>
-    <title>VaultBid | Profile</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+    rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="manifest" href="/assets/site.webmanifest">
+  <script type="module" src="/js/utils/userLoggedIn.mjs"></script>
+  <script src="/js/ui/hamburger.js" defer></script>
+  <script src="/js/auth/logout.js" defer></script>
+  <script src="/js/auction/userProfile.mjs" type="module"></script>
+  <script type="module" src="/js/ui/avatarModal.mjs"></script>
+  <script type="module" src="/js/ui/createModal.mjs"></script>
+  <title>VaultBid | Profile</title>
 </head>
 
 <body class="bg-charcoal max-w-screen-1200 mx-auto min-h-screen flex flex-col">
-    <header class="mx-9 flex items-center text-center justify-between py-5 max-sm: ">
-        <a class="cursor-pointer py-4" href="/listing">
-            <div class="flex items-center gap-3">
-                <div class="flex flex-row justify-center items-center gap-2"> <img class="w-10 h-10"
-                        src="/images/vaultbid-yellow.png " alt="Vaultbid logo">
-                    <div class="flex flex-col items-start text-white">
-                        <p class=" text-2xl font-bold font-roboto">Vaultbid</p>
-                        <p class="font-roboto text-xs font-light max-sm:hidden md:block text-left">Unlock the Best
-                            Deals, Bid
-                            with
-                            Confidence.
-                        </p>
-                    </div>
+  <header class="mx-9 flex items-center text-center justify-between py-5 max-sm: ">
+    <a class="cursor-pointer py-4" href="/listing">
+      <div class="flex items-center gap-3">
+        <div class="flex flex-row justify-center items-center gap-2"> <img class="w-10 h-10"
+            src="/images/vaultbid-yellow.png " alt="Vaultbid logo">
+          <div class="flex flex-col items-start text-white">
+            <p class=" text-2xl font-bold font-roboto">Vaultbid</p>
+            <p class="font-roboto text-xs font-light max-sm:hidden md:block text-left">Unlock the Best
+              Deals, Bid
+              with
+              Confidence.
+            </p>
+          </div>
 
-                </div>
+        </div>
 
-            </div>
-        </a>
-        <svg class="cursor-pointer w-6 h-6 text-gray-800 dark:text-white block sm:hidden" id="hamburger"
-            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-            viewBox="0 0 24 24">
-            <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14" />
-        </svg>
-        <svg class="cursor-pointer w-6 h-6 text-gray-800 dark:text-white hidden sm:hidden" aria-hidden="true" <svg
-            class="cursor-pointer w-6 h-6 text-gray-800 dark:text-white block sm:hidden" id="close"
+      </div>
+    </a>
+    <svg class="cursor-pointer w-6 h-6 text-gray-800 dark:text-white block sm:hidden" id="hamburger" aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+      <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14" />
+    </svg>
+    <svg class="cursor-pointer w-6 h-6 text-gray-800 dark:text-white hidden sm:hidden" aria-hidden="true" <svg
+      class="cursor-pointer w-6 h-6 text-gray-800 dark:text-white block sm:hidden" id="close"
+      xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M6 18 17.94 6M18 18 6.06 6" />
+    </svg>
+    <div class="max-sm:hidden  flex gap-10">
+      <p class="text-white font-roboto text-lg credits-desktop">Credits: $<span class="credits"></span>
+      </p>
+      <a href="/index.html" class="max-sm:hidden text-white font-roboto text-lg hidden login">Login</a>
+      <a href="/registration/" class="max-sm:hidden text-white font-roboto text-lg hidden register">Register</a>
+      <a href="/listing/" class="max-sm:hidden text-white font-roboto text-lg">Listings</a>
+      <a href="/profile/" class="max-sm:hidden text-white font-roboto text-lg profile-desktop">Profile</a>
+      <a href="/index.html"
+        class="max-sm:hidden bg-slate-blue text-white font-roboto flex items-center justify-center w-32 h-8 cursor-pointer rounded-2xl logout">Logout</a>
+    </div>
+  </header>
+  <div class="bg-charcoal w-full sm:hidden border-t border-white" id="menu">
+    <div class="flex flex-col justify-around items-center py-4">
+      <p class="sm:hidden text-white font-roboto text-lg credits-mob">Credits: $<span class="credits-mobile"></span>
+      </p>
+      <a href="/index.html" class="sm:hidden text-white font-roboto text-lg py-2 login-mobile">Login</a>
+      <a href="/registration/" class="sm:hidden text-white font-roboto text-lg py-2 register-mobile">Register</a>
+      <a href=" /listing/" class="sm:hidden text-white font-roboto text-lg py-2">Listings</a>
+      <a href="/profile/" class="sm:hidden text-white font-roboto text-lg py-2 profile-mob">Profile</a>
+      <a href="/index.html"
+        class="sm:hidden bg-slate-blue text-white font-roboto flex items-center justify-center w-32 h-8 cursor-pointer py-2 rounded-2xl logout-mob logout">Logout</a>
+    </div>
+  </div>
+  <main class="flex flex-col items-center justify-center gap-1 flex-grow main">
+    <!-- Update avatar modal-->
+    <div class="fixed z-10 inset-0 hidden" id="modal-avatar">
+      <div class="flex items-center justify-center min-h-screen bg-gray-500 bg-opacity-75 transition-all"
+        id="modal-overlay">
+        <div class="flex flex-col items-center bg-charcoal w-96 h-80 md:h-72 relative rounded-lg mx-7 px-8">
+          <svg id="exit-avatar-modal"
+            class="absolute top-5 right-6 w-8 h-8 text-gray-800 dark:text-white cursor-pointer" aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M6 18 17.94 6M18 18 6.06 6" />
-        </svg>
-        <div class="max-sm:hidden  flex gap-10">
-            <p class="text-white font-roboto text-lg credits-desktop">Credits: $<span class="credits"></span>
-            </p>
-            <a href="/index.html" class="max-sm:hidden text-white font-roboto text-lg hidden login">Login</a>
-            <a href="/registration/" class="max-sm:hidden text-white font-roboto text-lg hidden register">Register</a>
-            <a href="/listing/" class="max-sm:hidden text-white font-roboto text-lg">Listings</a>
-            <a href="/profile/" class="max-sm:hidden text-white font-roboto text-lg profile-desktop">Profile</a>
-            <a href="/index.html"
-                class="max-sm:hidden bg-slate-blue text-white font-roboto flex items-center justify-center w-32 h-8 cursor-pointer rounded-2xl logout">Logout</a>
+              d="M6 18 17.94 6M18 18 6.06 6" />
+          </svg>
+          <form class="flex flex-col w-full h-full justify-center" action="#" id="update-avatar">
+            <div class="flex flex-col gap-5">
+              <label class="text-white text-xl font-open-sans pb-3" for="image-url">Avatar Image
+                Url</label>
+              <input class="h-9 pl-3" type="text" id="image-url" name="image-url" required>
+              <input aria-label="Submit button to upload a profile image"
+                class="bg-slate-blue font-open-sans text-white h-9 cursor-pointer" type="submit" name="submit"
+                id="submit">
+            </div>
+            <div class=" text-center bg-red-400 border-4 border-red-500 mx-auto  px-5 py-2 my-3 font-bold w-full hidden"
+              id="error-message-avatar">
+            </div>
+          </form>
         </div>
-    </header>
-    <div class="bg-charcoal w-full sm:hidden border-t border-white" id="menu">
-        <div class="flex flex-col justify-around items-center py-4">
-            <p class="sm:hidden text-white font-roboto text-lg credits-mob">Credits: $<span
-                    class="credits-mobile"></span>
-            </p>
-            <a href="/index.html" class="sm:hidden text-white font-roboto text-lg py-2 login-mobile">Login</a>
-            <a href="/registration/" class="sm:hidden text-white font-roboto text-lg py-2 register-mobile">Register</a>
-            <a href=" /listing/" class="sm:hidden text-white font-roboto text-lg py-2">Listings</a>
-            <a href="/profile/" class="sm:hidden text-white font-roboto text-lg py-2 profile-mob">Profile</a>
-            <a href="/index.html"
-                class="sm:hidden bg-slate-blue text-white font-roboto flex items-center justify-center w-32 h-8 cursor-pointer py-2 rounded-2xl logout-mob logout">Logout</a>
-        </div>
+      </div>
     </div>
-    <main class="flex flex-col items-center justify-center gap-1 flex-grow main">
-        <!-- Update avatar modal-->
-        <div class="fixed z-10 inset-0 hidden" id="modal-avatar">
-            <div class="flex items-center justify-center min-h-screen bg-gray-500 bg-opacity-75 transition-all"
-                id="modal-overlay">
-                <div class="flex flex-col items-center bg-charcoal w-96 h-80 md:h-72 relative rounded-lg mx-7 px-8">
-                    <svg id="exit-avatar-modal"
-                        class="absolute top-5 right-6 w-8 h-8 text-gray-800 dark:text-white cursor-pointer"
-                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                        viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M6 18 17.94 6M18 18 6.06 6" />
-                    </svg>
-                    <form class="flex flex-col w-full h-full justify-center" action="#" id="update-avatar">
-                        <div class="flex flex-col gap-5">
-                            <label class="text-white text-xl font-open-sans pb-3" for="image-url">Avatar Image
-                                Url</label>
-                            <input class="h-9 pl-3" type="text" id="image-url" name="image-url" required>
-                            <input class="bg-slate-blue font-open-sans text-white h-9 cursor-pointer" type="submit"
-                                name="submit" id="submit">
-                        </div>
-                        <div class=" text-center bg-red-400 border-4 border-red-500 mx-auto  px-5 py-2 my-3 font-bold w-full hidden"
-                            id="error-message-avatar">
-                        </div>
-                    </form>
-                </div>
+    <div class="mt-14 flex flex-col justify-center items-center text-white gap-5">
+      <h1 class="font-roboto text-3xl font-bold">My Profile</h1>
+      <img class="rounded-full w-64 h-64 object-cover" alt="Profile photo" id="profileImg">
+      <h2 class="font-bold text-4xl font-roboto" id="username"></h2>
+      <p class=" text-xl font-roboto" id="bio"></p>
+      <p class="underline font-open-sans cursor-pointer" id="open-avatar-modal">Update avatar image</p>
+      <button class="bg-slate-blue rounded-lg w-48 h-9 flex justify-center items-center py-5 px-6 cursor-pointer"
+        id="open-create"> + Add New Listing
+      </button>
+    </div>
+    <!-- Create modal-->
+    <div class="fixed z-10 inset-0 hidden" id="modal-create">
+      <div class="flex items-center justify-center min-h-screen bg-gray-500 bg-opacity-75 transition-all"
+        id="modal-overlay-create">
+        <div class="flex flex-col items-center bg-charcoal w-96 lg:w-450 relative rounded-lg mx-7 px-8 py-1 lg:py-4">
+          <svg id="exit-create-modal"
+            class="absolute top-5 right-6 w-8 h-8 text-gray-800 dark:text-white cursor-pointer" aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M6 18 17.94 6M18 18 6.06 6" />
+          </svg>
+          <h1 class="text-center text-white font-bold font-roboto text-2xl pt-10">Add New Listing</h1>
+          <form class="flex flex-col w-full justify-center" action="#" id="update-create">
+            <div class="flex flex-col my-4">
+              <label class="text-white font-open-sans" for="title">Title</label>
+              <input class="h-9 pl-3" type="text" id="title" name="title" required>
             </div>
-        </div>
-        <div class="mt-14 flex flex-col justify-center items-center text-white gap-5">
-            <h1 class="font-roboto text-3xl font-bold">My Profile</h1>
-            <img class="rounded-full w-64 h-64 object-cover" alt="Profile photo" id="profileImg">
-            <h2 class="font-bold text-4xl font-roboto" id="username"></h2>
-            <p class=" text-xl font-roboto" id="bio"></p>
-            <p class="underline font-open-sans cursor-pointer" id="open-avatar-modal">Update avatar image</p>
-            <button class="bg-slate-blue rounded-lg w-48 h-9 flex justify-center items-center py-5 px-6 cursor-pointer"
-                id="open-create">
-                <p class="font-bold font-roboto">+ Add new listing</p>
-            </button>
-        </div>
-        <!-- Create modal-->
-        <div class="fixed z-10 inset-0 hidden" id="modal-create">
-            <div class="flex items-center justify-center min-h-screen bg-gray-500 bg-opacity-75 transition-all"
-                id="modal-overlay-create">
-                <div
-                    class="flex flex-col items-center bg-charcoal w-96 lg:w-450 relative rounded-lg mx-7 px-8 py-1 lg:py-4">
-                    <svg id="exit-create-modal"
-                        class="absolute top-5 right-6 w-8 h-8 text-gray-800 dark:text-white cursor-pointer"
-                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                        viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M6 18 17.94 6M18 18 6.06 6" />
-                    </svg>
-                    <h1 class="text-center text-white font-bold font-roboto text-2xl pt-10">Add New Listing</h1>
-                    <form class="flex flex-col w-full justify-center" action="#" id="update-create">
-                        <div class="flex flex-col my-4">
-                            <label class="text-white font-open-sans" for="title">Title</label>
-                            <input class="h-9 pl-3" type="text" id="title" name="title" required>
-                        </div>
-                        <div class="flex flex-col my-4">
-                            <label class="text-white font-open-sans" for="description">Description</label>
-                            <textarea class="h-36 pl-3 pt-1" id="description" name="description"></textarea>
-                        </div>
-                        <div class="flex flex-col my-4">
-                            <label class="text-white font-open-sans" for="image-list-url">Image URL </label>
-                            <input class="h-9 pl-3" type="text" id="image-list-url" name="image-list-url">
-                        </div>
-                        <div class="flex flex-col my-4">
-                            <label class="text-white font-open-sans" for="end-date">End Date</label>
-                            <input class="h-9 pl-3" type="date" id="end-date" name="end-date" required>
-                        </div>
-                        <input class="bg-slate-blue font-open-sans text-white h-9 cursor-pointer my-3" type="submit"
-                            name="submit" id="submit">
+            <div class="flex flex-col my-4">
+              <label class="text-white font-open-sans" for="description">Description</label>
+              <textarea class="h-36 pl-3 pt-1" id="description" name="description"></textarea>
+            </div>
+            <div class="flex flex-col my-4">
+              <label class="text-white font-open-sans" for="image-list-url">Image URL </label>
+              <input class="h-9 pl-3" type="text" id="image-list-url" name="image-list-url">
+            </div>
+            <div class="flex flex-col my-4">
+              <label class="text-white font-open-sans" for="end-date">End Date</label>
+              <input class="h-9 pl-3" type="date" id="end-date" name="end-date" required>
+            </div>
+            <input class="bg-slate-blue font-open-sans text-white h-9 cursor-pointer my-3" type="submit" name="submit"
+              id="submit" aria-label="The submit button for publishing a new listing">
 
-                        <div class=" text-center bg-red-400 border-4 border-red-500 mx-auto  px-5 py-2 my-3 font-bold w-full hidden"
-                            id="error-message-create"></div>
-                    </form>
-                </div>
-            </div>
+            <div class=" text-center bg-red-400 border-4 border-red-500 mx-auto  px-5 py-2 my-3 font-bold w-full hidden"
+              id="error-message-create"></div>
+          </form>
         </div>
-        <div class=" text-center bg-red-400 border-4 border-red-500 mx-auto w-96 px-5 py-4 my-3 font-bold  hidden"
-            id="error-message">
-        </div>
-        <!--My Listings-->
-        <h2 class="text-white font-open-sans font-light text-3xl max-sm:text-center mx-9 pt-20">My Listings</h2>
-        <div class="flex flex-wrap gap-6 max-sm:flex-col items-center mx-9 max-lg:justify-center"
-            id="listing-container">
-        </div>
-        <!--My Wins-->
-        <h2 class="text-white font-open-sans font-light text-3xl max-sm:text-center mx-9 pt-20">My Wins</h2>
-        <div class="flex flex-wrap gap-2 max-sm:flex-col items-center mx-9">
-        </div>
-    </main>
-    <footer class="flex justify-center gap-6 py-10">
-        <p class="text-white text-center">© Copyright VaultBid 2025</p>
-        <a class="cursor-pointer" href="https://github.com/ephraimdjeket" target="_blank"><svg
-                class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                <path fill-rule="evenodd"
-                    d="M12.006 2a9.847 9.847 0 0 0-6.484 2.44 10.32 10.32 0 0 0-3.393 6.17 10.48 10.48 0 0 0 1.317 6.955 10.045 10.045 0 0 0 5.4 4.418c.504.095.683-.223.683-.494 0-.245-.01-1.052-.014-1.908-2.78.62-3.366-1.21-3.366-1.21a2.711 2.711 0 0 0-1.11-1.5c-.907-.637.07-.621.07-.621.317.044.62.163.885.346.266.183.487.426.647.71.135.253.318.476.538.655a2.079 2.079 0 0 0 2.37.196c.045-.52.27-1.006.635-1.37-2.219-.259-4.554-1.138-4.554-5.07a4.022 4.022 0 0 1 1.031-2.75 3.77 3.77 0 0 1 .096-2.713s.839-.275 2.749 1.05a9.26 9.26 0 0 1 5.004 0c1.906-1.325 2.74-1.05 2.74-1.05.37.858.406 1.828.101 2.713a4.017 4.017 0 0 1 1.029 2.75c0 3.939-2.339 4.805-4.564 5.058a2.471 2.471 0 0 1 .679 1.897c0 1.372-.012 2.477-.012 2.814 0 .272.18.592.687.492a10.05 10.05 0 0 0 5.388-4.421 10.473 10.473 0 0 0 1.313-6.948 10.32 10.32 0 0 0-3.39-6.165A9.847 9.847 0 0 0 12.007 2Z"
-                    clip-rule="evenodd" />
-            </svg>
-        </a>
-    </footer>
+      </div>
+    </div>
+    <div class=" text-center bg-red-400 border-4 border-red-500 mx-auto w-96 px-5 py-4 my-3 font-bold  hidden"
+      id="error-message">
+    </div>
+    <!--My Listings-->
+    <h2 class="text-white font-open-sans font-light text-3xl max-sm:text-center mx-9 pt-20">My Listings</h2>
+    <div class="flex flex-wrap gap-6 max-sm:flex-col items-center mx-9 max-lg:justify-center" id="listing-container">
+    </div>
+    <!--My Wins-->
+    <h2 class="text-white font-open-sans font-light text-3xl max-sm:text-center mx-9 pt-20">My Wins</h2>
+    <div class="flex flex-wrap gap-2 max-sm:flex-col items-center mx-9">
+    </div>
+  </main>
+  <footer class="flex justify-center gap-6 py-10">
+    <p class="text-white text-center">© Copyright VaultBid 2025</p>
+    <a class="cursor-pointer" href="https://github.com/ephraimdjeket" target="_blank"><span
+        class="hidden white">.</span><svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+        <path fill-rule="evenodd"
+          d="M12.006 2a9.847 9.847 0 0 0-6.484 2.44 10.32 10.32 0 0 0-3.393 6.17 10.48 10.48 0 0 0 1.317 6.955 10.045 10.045 0 0 0 5.4 4.418c.504.095.683-.223.683-.494 0-.245-.01-1.052-.014-1.908-2.78.62-3.366-1.21-3.366-1.21a2.711 2.711 0 0 0-1.11-1.5c-.907-.637.07-.621.07-.621.317.044.62.163.885.346.266.183.487.426.647.71.135.253.318.476.538.655a2.079 2.079 0 0 0 2.37.196c.045-.52.27-1.006.635-1.37-2.219-.259-4.554-1.138-4.554-5.07a4.022 4.022 0 0 1 1.031-2.75 3.77 3.77 0 0 1 .096-2.713s.839-.275 2.749 1.05a9.26 9.26 0 0 1 5.004 0c1.906-1.325 2.74-1.05 2.74-1.05.37.858.406 1.828.101 2.713a4.017 4.017 0 0 1 1.029 2.75c0 3.939-2.339 4.805-4.564 5.058a2.471 2.471 0 0 1 .679 1.897c0 1.372-.012 2.477-.012 2.814 0 .272.18.592.687.492a10.05 10.05 0 0 0 5.388-4.421 10.473 10.473 0 0 0 1.313-6.948 10.32 10.32 0 0 0-3.39-6.165A9.847 9.847 0 0 0 12.007 2Z"
+          clip-rule="evenodd" />
+      </svg>
+    </a>
+  </footer>
 </body>
 
 </html>
