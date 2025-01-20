@@ -4,7 +4,8 @@
   "description": "Development of VaultBid",
   "main": "tailwind.config.js",
   "scripts": {
-    "build": "npx tailwindcss -i ./css/main.css -o ./css/styles.css --watch"
+    "watch": "npx tailwindcss -i ./css/main.css -o ./css/styles.css --watch",
+    "build": "npx tailwindcss -i ./css/main.css -o ./css/styles.css --minify"
   },
   "keywords": [],
   "author": "",
