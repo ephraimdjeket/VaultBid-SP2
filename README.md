@@ -8,7 +8,7 @@
   </tr>
     <tr>
     <td>Gantt Chart</td>
-    <td><a href="https://github.com/users/ephraimdjeket/projects/2/views/1" target="_blank">My Gantt Chart</a></td>
+    <td><a href="https://github.com/users/ephraimdjeket/projects/2/views/2?layout=roadmap" target="_blank">My Gantt Chart</a></td>
   </tr>
       <tr>
     <td>Style Guide</td>
@@ -20,7 +20,7 @@
   </tr>
       <tr>
     <td>Kanban Board</td>
-    <td><a href="https://github.com/users/ephraimdjeket/projects/2/views/2?layout=roadmap" target="_blank">My Kanban</a></td>
+    <td><a href="https://github.com/users/ephraimdjeket/projects/2/views/1" target="_blank">My Kanban</a></td>
   </tr>
         <tr>
     <td>Repository</td>
