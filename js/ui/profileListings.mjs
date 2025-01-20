@@ -1,5 +1,7 @@
 import { API_AUCTION_PROFILE } from "../utils/apiConfig.mjs";
 import { displayError } from "../utils/errorHandler.mjs";
+import { initializeHamburger, initializeLogout } from "../ui/profileActions.mjs";
+
 
 const creditDisplay = document.querySelector(".credits");
 const creditDisplayMobile = document.querySelector(".credits-mobile");
@@ -103,10 +105,8 @@ export function listItem(item) {
 
   // Add title
   const listingTitle = document.createElement("h2");
-  listingTitle.classList.add("list-title", "font-bold", "text-xl", "font-roboto", "w-full", "truncate");
-  listingTitle.innerText = item.title && item.title.length > 12
-    ? item.title.substring(0, 12) + "..."
-    : item.title || "Untitled Listing";
+  listingTitle.classList.add("list-title", "font-bold", "text-xl", "font-roboto", "w-full", "truncate", "text-ellipsis");
+  listingTitle.innerText = item.title || "Untitled Listing";
   listingContainer.appendChild(listingTitle);
 
   // Add creation date
@@ -149,4 +149,7 @@ export function listItem(item) {
 
   // Append card to container
   listingCardContainer.appendChild(listingCard);
-}
+};
+
+initializeLogout();
+initializeHamburger();

@@ -2,6 +2,7 @@ import { apiFetch } from "../utils/apiConfig.mjs";
 import { displayError } from "../utils/errorHandler.mjs";
 import { userLoginCheck } from "../utils/userLoggedIn.mjs";
 import { renderListingCard } from "../utils/renderListingCard.mjs";
+import { initializeHamburger, initializeLogout } from "../ui/profileActions.mjs";
 
 const spinner = document.querySelector(".status");
 const listingCardContainer = document.getElementById("listing-container");
@@ -152,3 +153,5 @@ oldestFilterBtn.addEventListener("click", (e) => {
 
 userLoginCheck();
 auctionListings();
+initializeLogout();
+initializeHamburger();

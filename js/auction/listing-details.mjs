@@ -2,6 +2,7 @@ import { API_AUCTION_LISTINGS } from "../utils/apiConfig.mjs";
 import { singleProfile, accessToken, apiKey } from "../ui/profileListings.mjs";
 import { displayError } from "../utils/errorHandler.mjs";
 import { userLoginCheck } from "../utils/userLoggedIn.mjs";
+import { initializeHamburger, initializeLogout } from "../ui/profileActions.mjs";
 
 const listingImage = document.getElementById("listing-image");
 const listingTitle = document.getElementById("title");
@@ -150,3 +151,5 @@ function renderListingDetails(listing) {
 };
 
 listingDetails();
+initializeLogout();
+initializeHamburger();
