@@ -18,8 +18,6 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
   <link rel="manifest" href="/assets/site.webmanifest">
-  <script src="/js/ui/hamburger.js" defer></script>
-  <script src="/js/auth/logout.js" defer></script>
   <script type="module" src="/js/auction/listing-details.mjs"></script>
   <title>VaultBid | Listing Detail</title>
 </head>
@@ -46,8 +44,7 @@
       xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
       <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14" />
     </svg>
-    <svg class="cursor-pointer w-6 h-6 text-gray-800 dark:text-white hidden sm:hidden" aria-hidden="true" <svg
-      class="cursor-pointer w-6 h-6 text-gray-800 dark:text-white block sm:hidden" id="close"
+    <svg aria-hidden="true" class="cursor-pointer w-6 h-6 text-gray-800 dark:text-white block sm:hidden" id="close"
       xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
         d="M6 18 17.94 6M18 18 6.06 6" />
@@ -83,8 +80,8 @@
       </svg><span class="hidden">.</span></a>
     <div class="lg:flex flex-row justify-center items-center">
       <div class=" lg:flex flex-row gap-10 items-start">
-        <div class="px-6 flex flex-col justify-center items-center pt-9"> <img class="block w-96 h-96 object-cover"
-            alt="placeholder image" id="listing-image">
+        <div class="px-6 flex flex-col justify-center items-center pt-9"> <img src="#"
+            class="block w-96 h-96 object-cover" alt="placeholder image" id="listing-image">
         </div>
 
         <!-- Listing details-->
@@ -127,7 +124,7 @@
                   required>
                 <label class="sr-only" for="bid"><span class="hidden">.</span></label>
                 <input class="bg-slate-blue text-white font-bold h-9 w-44 font-open-sans cursor-pointer" type="submit"
-                  value="Bid" name="bid">
+                  value="Bid" name="bid" id="bid">
               </div>
             </form>
           </div>

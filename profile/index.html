@@ -19,11 +19,8 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
   <link rel="manifest" href="/assets/site.webmanifest">
   <script type="module" src="/js/utils/userLoggedIn.mjs"></script>
-  <script src="/js/ui/hamburger.js" defer></script>
-  <script src="/js/auth/logout.js" defer></script>
   <script src="/js/auction/userProfile.mjs" type="module"></script>
-  <script type="module" src="/js/ui/avatarModal.mjs"></script>
-  <script type="module" src="/js/ui/createModal.mjs"></script>
+  <script src="/js/ui/profileModals.mjs" type="module"></script>
   <title>VaultBid | Profile</title>
 </head>
 
@@ -50,8 +47,7 @@
       xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
       <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14" />
     </svg>
-    <svg class="cursor-pointer w-6 h-6 text-gray-800 dark:text-white hidden sm:hidden" aria-hidden="true" <svg
-      class="cursor-pointer w-6 h-6 text-gray-800 dark:text-white block sm:hidden" id="close"
+    <svg aria-hidden="true" class="cursor-pointer w-6 h-6 text-gray-800 dark:text-white block sm:hidden" id="close"
       xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
         d="M6 18 17.94 6M18 18 6.06 6" />
@@ -67,7 +63,7 @@
         class="max-sm:hidden bg-slate-blue text-white font-roboto flex items-center justify-center w-32 h-8 cursor-pointer rounded-2xl logout">Logout</a>
     </div>
   </header>
-  <div class="bg-charcoal w-full sm:hidden border-t border-white" id="menu">
+  <div class="bg-charcoal w-full sm:hidden" id="menu">
     <div class="flex flex-col justify-around items-center py-4">
       <p class="sm:hidden text-white font-roboto text-lg credits-mob">Credits: $<span class="credits-mobile"></span>
       </p>
@@ -109,7 +105,7 @@
     </div>
     <div class="mt-14 flex flex-col justify-center items-center text-white gap-5">
       <h1 class="font-roboto text-3xl font-bold">My Profile</h1>
-      <img class="rounded-full w-64 h-64 object-cover" alt="Profile photo" id="profileImg">
+      <img src="#" class="rounded-full w-64 h-64 object-cover" alt="Profile photo" id="profileImg">
       <h2 class="font-bold text-4xl font-roboto" id="username"></h2>
       <p class=" text-xl font-roboto" id="bio"></p>
       <p class="underline font-open-sans cursor-pointer" id="open-avatar-modal">Update avatar image</p>
@@ -147,7 +143,7 @@
               <input class="h-9 pl-3" type="date" id="end-date" name="end-date" required>
             </div>
             <input class="bg-slate-blue font-open-sans text-white h-9 cursor-pointer my-3" type="submit" name="submit"
-              id="submit" aria-label="The submit button for publishing a new listing">
+              id="submit-listing" aria-label="The submit button for publishing a new listing">
 
             <div class=" text-center bg-red-400 border-4 border-red-500 mx-auto  px-5 py-2 my-3 font-bold w-full hidden"
               id="error-message-create"></div>
