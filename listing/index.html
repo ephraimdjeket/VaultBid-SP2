@@ -20,11 +20,12 @@
   <link rel="manifest" href="/assets/site.webmanifest">
   <script type="module" src="/js/utils/userLoggedIn.mjs"></script>
   <script type="module" src="/js/auction/listings.mjs"></script>
+  <script type="module" src="/js/auction/sortingFetch.mjs"></script>
   <title>VaultBid | Listings</title>
 </head>
 
 <body class="bg-charcoal max-w-screen-1200 mx-auto min-h-screen flex flex-col">
-  <header class="mx-9 flex items-center text-center justify-between my-7">
+  <header class="mx-9 flex items-center text-center justify-between mt-7">
     <a class="cursor-pointer py-4" href="/listing">
       <div class="flex items-center gap-3">
         <div class="flex flex-row justify-center items-center gap-2"> <img class="w-10 h-10"
@@ -51,7 +52,7 @@
       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
         d="M6 18 17.94 6M18 18 6.06 6" />
     </svg>
-    <div class="max-sm:hidden  flex gap-10">
+    <div class="max-sm:hidden  flex gap-10 mb-3">
       <p class="text-white font-roboto text-lg credits-desktop">Credits: $<span class="credits"></span>
       </p>
       <a href="/index.html" class="max-sm:hidden text-white font-roboto text-lg hidden login">Login</a>
@@ -63,7 +64,7 @@
     </div>
   </header>
   <div class="bg-charcoal w-full sm:hidden" id="menu">
-    <div class="flex flex-col justify-around items-center py-4">
+    <div class="flex flex-col justify-around items-center pb-12">
       <p class="sm:hidden text-white font-roboto text-lg credits-mob">Credits: $<span class="credits-mobile"></span>
       </p>
       <a href="/index.html" class="sm:hidden text-white font-roboto text-lg py-2 login-mobile">Login</a>
