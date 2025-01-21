@@ -8,7 +8,7 @@ const registerPasswordInput = document.getElementById("register-password");
 const registerAvatarUrl = document.getElementById("register-avatar-url");
 const registerFormEl = document.getElementById("register-form");
 const registerSuccessfulMessage = document.getElementById("register-successful");
-
+const submitButton = document.querySelector("input[type='submit']");
 
 async function registerFetch() {
   const bodyData = {
@@ -21,6 +21,8 @@ async function registerFetch() {
   if (registerAvatarUrl.value !== "") {
     bodyData.avatar = registerAvatarUrl.value;
   }
+
+  submitButton.disabled = true;
 
   try {
     const response = await fetch(`${API_REGISTER}`, {
@@ -49,6 +51,10 @@ async function registerFetch() {
     registerSuccessfulMessage.classList.add("hidden");
     const errorMessage = `An error occurred: ${error.message}`;
     displayError(errorMessage);
+  } finally {
+    setTimeout(() => {
+      submitButton.disabled = false;
+    }, 3000)
   }
 }
 
