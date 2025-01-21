@@ -55,8 +55,8 @@
       <a href="/listing/" class="max-sm:hidden md:block text-white font-roboto text-lg">Listings</a>
     </div>
   </header>
-  <div class="bg-charcoal w-full hidden border-t  border-white" id="menu">
-    <div class="flex flex-col justify-around items-center py-4">
+  <div class="bg-charcoal w-full hidden" id="menu">
+    <div class="flex flex-col justify-around items-center pb-12">
       <a href="/listing/" class="sm:hidden text-white font-roboto text-lg">Listing</a>
     </div>
   </div>
@@ -69,7 +69,9 @@
     <form class="mt-4 min-w-60" id="login-form">
       <div class="flex flex-col font-open-sans">
         <label class="text-white font-semibold mt-6 pb-2" for="login-email">Email</label>
-        <input class="pl-3 h-8 min-w-60 md:w-72" type="email" name="login-email" id="login-email" required>
+        <input class="pl-3 h-8 min-w-60 md:w-72" type="email" name="login-email" id="login-email"
+          pattern="^[a-zA-Z0-9._%+\-]+@stud\.noroff\.no$" title="Please use a valid @stud.noroff.no email address."
+          required>
         <label class="text-white font-semibold mt-6 pb-2" for="login-password">Password</label>
         <input class="pl-3 h-8 min-w-60 md:w-72" type="password" name="login-password" id="login-password" required>
         <input class="bg-slate-blue text-white font-semibold h-9 font-roboto mt-6 cursor-pointer" type="submit"
