@@ -24,14 +24,11 @@ export async function singleProfile() {
     const { data } = await response.json();
     creditDisplay.textContent = data.credits;
     creditDisplayMobile.textContent = data.credits;
-
-
   } catch (error) {
     displayError(error.message) || "An unknown error occurred while fetching";
     return;
   }
 }
-
 
 export const authHeaders = {
   method: "GET",
@@ -58,8 +55,8 @@ export async function fetchListings() {
   } catch (error) {
     displayError(error.message) || "An unknown error occurred while fetching";
     return;
-  }
-}
+  };
+};
 
 export async function fetchWins() {
   try {
@@ -73,8 +70,8 @@ export async function fetchWins() {
   } catch (error) {
     displayError(error.message) || "An unknown error occurred while fetching";
     return;
-  }
-}
+  };
+};
 
 export function listItem(item) {
   const listingCard = document.createElement("a");

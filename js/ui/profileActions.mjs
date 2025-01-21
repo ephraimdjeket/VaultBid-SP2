@@ -39,3 +39,5 @@ export function initializeHamburger() {
     menuEl.classList.add("hidden");
   });
 };
+
+initializeHamburger();
