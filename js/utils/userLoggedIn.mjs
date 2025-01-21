@@ -14,9 +14,16 @@ const profileMobileTag = document.querySelector(".profile-mob");
 const logoutMobileBtn = document.querySelector(".logout-mob");
 const loginMobileTag = document.querySelector(".login-mobile");
 const registerMobileTag = document.querySelector(".register-mobile");
-
+const mainContainer = document.querySelector("main");
 
 export const userLoggedIn = localStorage.getItem("user");
+
+if (window.location.pathname === "/profile/index.html" || window.location.pathname === "/profile/" && !userLoggedIn) {
+  mainContainer.innerHTML = `<div
+                  class=" text-center bg-red-400 border-4 border-red-500 mx-auto w-96 px-5 py-4 my-3 font-bold"
+                  id="error-message"> Unauthorized access.
+                </div>`;
+};
 
 export function isNotLoggedIn() {
   creditDesktop.classList.add("hidden");
@@ -57,8 +64,7 @@ export function userLoginCheck() {
     const currentUrl3 = window.location.href;
     if (currentUrl3.includes("/listing-details")) {
       bidSection.classList.remove("hidden");
-    }
-
+    };
   } else {
     isNotLoggedIn();
     const currentUrl1 = window.location.href;
@@ -66,6 +72,6 @@ export function userLoginCheck() {
       bidSection.classList.add("hidden");
       visitorMessage.classList.remove("hidden");
       visitorMessage.innerText = "Login to bid 😊";
-    }
-  }
-}
+    };
+  };
+};
