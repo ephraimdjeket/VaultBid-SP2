@@ -17,8 +17,21 @@ const biddingFormEl = document.getElementById("bid-form");
 const bidSuccessfulMessage = document.getElementById("bid-successful");
 const spinner = document.querySelector(".status");
 
-userLoginCheck(singleProfile);
-
+/**
+ * Submits a bid for the selected auction listing.
+ * 
+ * @param {string} id The unique id of the selected listing.
+ * @returns {void} Handles success or error cases by displaying the relevant message and performing updates.
+ * 
+ * @throws {Error} Handles any errors related to the network or if an unexpected error occurs during the fetch.
+ * 
+ * @description 
+ * - Checks if the bid amount is a number and that it's above 0. If not, it displays an error message to the user.
+ * - If the bid amount is valid, it sends a POST request to the API to bid on current listing id.
+ * - If the POST request is not successful, it'll throw an error message that comes from the API to the user.
+ * - If the POST request is successful, it'll display a custom success message to the user.
+ * - Invokes the function "listingDetails()" and "singleProfile()" to update the UI changes after a successful bid.
+ */
 async function bidOnItem(id) {
   try {
     const amount = Number(bidAmount.value);
@@ -26,7 +39,6 @@ async function bidOnItem(id) {
       displayError("Please enter a valid bid amount greater than zero.");
       return;
     }
-
     const response = await fetch(`${API_AUCTION_LISTINGS}/${id}/bids`, {
       method: "POST",
       headers: {
@@ -38,30 +50,44 @@ async function bidOnItem(id) {
         amount: amount,
       }),
     });
-
     if (!response.ok) {
       const errorData = await response.json();
       const errorMessage = errorData.errors[0].message || "Failed to bid";
       displayError(errorMessage);
       return;
-    }
-
+    };
     const result = await response.json();
     bidSuccessfulMessage.classList.remove("hidden");
     bidSuccessfulMessage.innerText = "You've successfully bid on this item"
     setTimeout(() => {
       bidSuccessfulMessage.classList.add("hidden");
     }, 3000);
-
     listingDetails();
     singleProfile();
   } catch (error) {
     bidSuccessfulMessage.classList.add("hidden");
     const errorMessage = `${error.message}`;
     displayError(errorMessage);
-  }
-}
+    return
+  };
+};
 
+/**
+ * @async 
+ * @function listingDetails fetches and displays details for auction listing.
+ * 
+ * @throw {Error} if:
+ * - No id is found in the URL.
+ * - The response is not ok.
+ * - No listing is found with the given id.
+ * 
+ * @description
+ * - Retrieves the id parameter from the current URL.
+ * - Fetches the list of auction listings from the API.
+ * - Finds and displays the listing that matches the id.
+ * - Sets up an event listener on the bidding form to handle bid submissions.
+ * - Uses error function to display the relevant error message.
+ */
 async function listingDetails() {
   try {
     spinner.classList.remove("hidden");
@@ -98,11 +124,20 @@ async function listingDetails() {
     const errorMessage = `${error.message}`;
     displayError(errorMessage);
     return;
-  }
-}
+  };
+};
 
 
-
+/**
+ * 
+ * @param {object} listing The auction listing object to be rendered.
+ * @param {Array} listing.media Array of the listing media containing src "URL" and "alt".
+ * @param {string} listing.title The title of the listing object.
+ * @param {string} listing.description The description of the listing object.
+ * @param {string} listing.seller The username of the relevant listing object.
+ * @param {string} listing.endsAt The end date of the relevant listing object formatted.
+ * @param {Array} listing.bids An array of the current bids if any. Iterated through to get the highest current bid and display it. 
+ */
 function renderListingDetails(listing) {
   if (!listing.media || listing.media.length === 0 || !listing.media[0]?.url) {
     listingImage.src = "/images/placeholder-image.jpg";
@@ -110,11 +145,11 @@ function renderListingDetails(listing) {
     listingImage.src = listing.media[0].url;
   }
   listingImage.alt = listing.media?.[0]?.alt || "An image";
-  listingTitle.innerText = listing.title && listing.title.length > 40
-    ? listing.title.substring(0, 40) + "..."
-    : listing.title || "Untitled Listing";
+  listingTitle.classList.add("text-ellipsis", "overflow-hidden", "text-clip");
+  listingTitle.innerText = listing.title;
   listingDescription.style.maxWidth = "24rem";
-  listingDescription.innerText = listing.description && listing.description.length > 100 ? listing.description.substring(0, 100) + "..." : listing.description || "No description added.";
+  listingDescription.classList.add("text-ellipsis", "overflow-hidden", "text-clip");
+  listingDescription.innerText = listing.description || "No description added.";
   listingSeller.innerText = `Seller: ${listing.seller.name} `;
   const originalDate = listing.endsAt;
   const date = new Date(originalDate);
@@ -153,3 +188,4 @@ function renderListingDetails(listing) {
 listingDetails();
 initializeLogout();
 initializeHamburger();
+userLoginCheck(singleProfile);
