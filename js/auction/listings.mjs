@@ -11,7 +11,7 @@ async function auctionListings() {
   if (!listingCardContainer) {
     displayError("Listing container element not found.");
     return;
-  }
+  };
 
   try {
     spinner.classList.remove("hidden");
@@ -28,7 +28,7 @@ async function auctionListings() {
       const errorMessage = errorData.errors[0].message || "Failed to fetch";
       displayError(errorMessage);
       return;
-    }
+    };
     spinner.classList.add("hidden");
     const { data } = await response.json();
     renderListingCard(data, listingCardContainer);
