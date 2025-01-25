@@ -1,9 +1,6 @@
 import { userLoginCheck } from "../utils/userLoggedIn.mjs";
 import { initializeHamburger, initializeLogout } from "../ui/profileActions.mjs";
 
-
-userLoginCheck();
-
 const userName = localStorage.getItem("user");
 const userProfileName = document.getElementById("username");
 const userProfileBio = document.getElementById("bio")
@@ -16,3 +13,4 @@ userProfilePicture.src = user.avatar.url || "/images/placeholder-image.jpg";
 
 initializeLogout();
 initializeHamburger();
+userLoginCheck();
