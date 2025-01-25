@@ -6,7 +6,14 @@ import { initializeHamburger, initializeLogout } from "../ui/profileActions.mjs"
 
 const spinner = document.querySelector(".status");
 const listingCardContainer = document.getElementById("listing-container");
-
+/**
+ * 
+ * @description
+ * - Fetches and renders all the listing auction cards to the DOM.
+ * - Checks if listingCardContainer exists, otherwise it'll display an error exit.
+ * - Displays a spinner during the fetch process.
+ * - Handles errors in the fetch response and unexpected runtime errors.
+ */
 async function auctionListings() {
   if (!listingCardContainer) {
     displayError("Listing container element not found.");
