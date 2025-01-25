@@ -23,6 +23,7 @@ if (window.location.pathname === "/profile/index.html" || window.location.pathna
                   class=" text-center bg-red-400 border-4 border-red-500 mx-auto w-96 px-5 py-4 my-3 font-bold"
                   id="error-message"> Unauthorized access.
                 </div>`;
+  isNotLoggedIn();
 };
 
 export function isNotLoggedIn() {
