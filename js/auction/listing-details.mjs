@@ -162,7 +162,7 @@ function renderListingDetails(listing) {
   listingCurrentBid.innerText = `Highest bid: $${highestAmount} `;
   listing.bids.forEach((bids) => {
     const bidderContainer = document.createElement("div");
-    bidderContainer.classList.add("py-4", "item-center")
+    bidderContainer.classList.add("py-4", "item-center", "flex", "justify-center");
     const bidderName = document.createElement("span");
     bidderName.classList.add("w-1/3");
     bidderName.innerText = `${bids.bidder.name} `;
