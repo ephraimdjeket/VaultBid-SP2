@@ -14,7 +14,15 @@ export const accessToken = localStorage.getItem("accessToken");
 export const apiKey = "b5f7559e-bbe6-4f1d-8d32-2b5618d9a720";
 export const user = JSON.parse(userName);
 
-
+/**
+ * @description
+ * Fetches and displays the profile data for the currently logged-in user.
+ * If the fetch operation fails, an error message is displayed.
+ *
+ * @async
+ * @function singleProfile
+ * @throws {Error} - Throws an error if the fetch operation fails.
+ */
 export async function singleProfile() {
   try {
     const response = await fetch(`${API_AUCTION_PROFILE}/${user.name}`, authHeaders);
@@ -29,7 +37,7 @@ export async function singleProfile() {
   } catch (error) {
     displayError(error.message) || "An unknown error occurred while fetching";
     return;
-  }
+  };
 };
 
 export function fetchListings() {

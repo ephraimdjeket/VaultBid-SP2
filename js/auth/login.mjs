@@ -6,6 +6,15 @@ const loginPasswordInput = document.getElementById("login-password");
 const loginFormEl = document.getElementById("login-form");
 const submitButton = document.querySelector("input[type='submit']");
 
+/**
+ * Stores user data in localStorage if the response is successful.
+ * If the response is not OK, it displays an error message and disables the submit button.
+ *
+ * @function storingUserData
+ * @param {Object} json The JSON response from the API.
+ * @param {Response} response The response object from the fetch call.
+ * @returns {void}
+ */
 function storingUserData(json, response) {
   if (!response.ok) {
     const errorMessage = json.errors[0].message || "Failed to login";
@@ -19,6 +28,15 @@ function storingUserData(json, response) {
   };
 };
 
+/**
+ * @description
+ * Handles the login process by sending a POST request to the API with user credentials.
+ * If successful, it stores user data and redirects the user. If an error occurs, it displays an error message.
+ * The submit button is disabled during the process and re-enabled after 3 seconds.
+ *
+ * @async
+ * @function login
+ */
 async function login() {
   try {
     const response = await fetch(`${API_LOGIN}`, {

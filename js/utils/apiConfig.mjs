@@ -6,6 +6,7 @@ export const API_LOGIN = `${API_AUTH}/login`;
 export const API_REGISTER = `${API_AUTH}/register`;
 export const API_AUCTION_LISTINGS = `${API_BASE_URL}/auction/listings`;
 export const API_AUCTION_PROFILE = `${API_BASE_URL}/auction/profiles`;
+
 /**
  * 
  * @param {string} sortOrder The order in which to sort listings (e.g "asc" for ascending and "desc" for descending).

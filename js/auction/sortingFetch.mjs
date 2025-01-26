@@ -8,6 +8,15 @@ const newestFilterBtn = document.getElementById("newest");
 const oldestFilterBtn = document.getElementById("oldest");
 const searchForm = document.getElementById("search-form");
 
+/**
+ * @description
+ * - Fetches data from the API
+ * - Sorts it by the newest creation data and renders the sorted data.
+ * - While fetching, a spinner is displayed to indicate loading.
+ * 
+ * @async
+ * @function fetchOldest
+ */
 async function fetchNewest() {
   spinner.classList.remove("hidden");
   try {
@@ -43,6 +52,15 @@ async function fetchNewest() {
   }
 };
 
+/**
+ * @description
+ * - Fetches data from the API
+ * - Sorts it by the oldest creation data and renders the sorted data.
+ * - While fetching, a spinner is displayed to indicate loading.
+ * 
+ * @async
+ * @function fetchOldest
+ */
 async function fetchOldest() {
   spinner.classList.remove("hidden");
   try {
@@ -76,6 +94,15 @@ async function fetchOldest() {
   };
 };
 
+/**
+ * @description
+ * - Adds an event listener to the search form for the "input" event.
+ * - When the user types in the search input, it fetches data from an API.
+ * - Filters the data based on the input value and renders the filtered results.
+ * 
+ * @listens input
+ * @param {Event} e The input event object.
+ */
 searchForm.addEventListener("input", async (e) => {
   const inputValue = e.target.value.toLowerCase();
   try {
@@ -100,7 +127,6 @@ searchForm.addEventListener("input", async (e) => {
     return;
   };
 });
-
 
 newestFilterBtn.addEventListener("click", (e) => {
   e.preventDefault();

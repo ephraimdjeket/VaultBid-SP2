@@ -6,6 +6,7 @@ import { initializeHamburger, initializeLogout } from "../ui/profileActions.mjs"
 
 const spinner = document.querySelector(".status");
 const listingCardContainer = document.getElementById("listing-container");
+
 /**
  * 
  * @description

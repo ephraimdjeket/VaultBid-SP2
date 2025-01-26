@@ -40,6 +40,15 @@ createEl.addEventListener("click", (e) => {
   }
 });
 
+/**
+ * - Creates a new listing by sending a POST request to the API with the provided listing details.
+ * - If the creation is successful, the user is redirected to the profile page.
+ * - If the creation fails, an error message is displayed.
+ *
+ * @async
+ * @function createListing
+ * @throws {Error} - Throws an error if the creation operation fails.
+ */
 async function createListing() {
   try {
     const response = await fetch(`${API_AUCTION_LISTINGS}`, {
@@ -61,19 +70,17 @@ async function createListing() {
       const errorMessage = errorData.errors[0].message || "Failed to create post";
       displayErrorCreate(errorMessage);
       return;
-    }
+    };
     window.location.href = "/profile/";
-
-
   } catch (error) {
     displayErrorCreate(error.message);
     return;
-  }
-}
+  };
+};
+
 updateCreateEl.addEventListener("submit", (e) => {
   e.preventDefault();
   createListing();
-
 });
 
 // Closes the modal once the user clicks the close icon.
@@ -96,7 +103,16 @@ avatarModalEl.addEventListener("click", (e) => {
   };
 });
 
-// PUT HTTP request to update avatar image URL
+/**
+ * @description
+ * - Updates the user's avatar URL by sending a PUT request to the API.
+ * - If the update is successful, the user's avatar URL is updated in local storage,
+ * - The user is redirected to the profile page. If the update fails, an error message is displayed.
+ *
+ * @async
+ * @function updateAvatarURL
+ * @throws {Error} - Throws an error if the update operation fails.
+ */
 async function updateAvatarURL() {
   try {
     const response = await fetch(`${API_AUCTION_PROFILE}/${user.name}`, {

@@ -127,7 +127,6 @@ async function listingDetails() {
   };
 };
 
-
 /**
  * 
  * @param {object} listing The auction listing object to be rendered.

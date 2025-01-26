@@ -16,6 +16,18 @@ export const authHeaders = {
   }
 };
 
+/**
+ * @description
+ * - Fetches data from the API based on the specified type.
+ * - Renders the data into the provided container using the `listingCard` function.
+ * - If the fetch operation fails, an error message is displayed.
+ *
+ * @async
+ * @function tryCatch
+ * @param {HTMLElement} container The container element where the fetched data will be rendered.
+ * @param {string} type  The type of data to fetch.
+ * @throws {Error} Throws an error if the fetch operation fails.
+ */
 export async function tryCatch(container, type) {
   try {
     const response = await fetch(`${API_AUCTION_PROFILE}/${user.name}/${type}`, authHeaders);
