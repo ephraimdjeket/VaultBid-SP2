@@ -24,10 +24,10 @@
   </tr>
         <tr>
     <td>Repository</td>
-    <td></td>
+    <td>https://github.com/ephraimdjeket/VaultBid-SP2</td>
   </tr>
       <tr>
     <td>Hosted Demo</td>
-    <td></td>
+    <td>https://coruscating-horse-1cb74a.netlify.app/</td>
   </tr>
 </table>
